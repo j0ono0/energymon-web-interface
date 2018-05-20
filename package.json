@@ -1,0 +1,22 @@
+{
+  "name": "Energy_Monitor_web-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "scss": "scss src/styles/scss/SASS_manifest.scss:dist/styles.css",
+    "babel": "babel src/scripts -d src/temp",
+    "uglify": "uglifyjs  src/scripts/vue.min.js src/temp/components/*.js src/temp/vue_app.js -o dist/scripts.min.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "node-sass": "^4.9.0",
+    "uglify-js": "^3.3.25"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

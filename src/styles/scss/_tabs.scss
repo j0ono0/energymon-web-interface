@@ -1,0 +1,28 @@
+/* Tabs */
+.tabs{
+        background: #333;
+        color: #999;
+        overflow: hidden;
+        padding: 3px 6px 0 6px;
+}
+.tabs__tab{
+    color: #ccc;
+    display: block;
+    float:left;
+    font-weight: bold;
+    padding: 8px 20px;
+    text-decoration: none;
+}
+.tabs__tab > *{
+    margin: 0;
+}
+.tabs__tab.active{
+    background: #f4f4f4;
+    color: #333;
+}
+.tabs__content{
+    display:none;
+}
+.tabs__content.active{
+    display: block;
+}

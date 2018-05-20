@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+
+        <title>Whatnick: Energy Monitor</title>
+    </head>
+	<body>
+        <div id="application">
+            <div class="banner pagesection">
+                <h1 class="banner__title">Whatnick. Energymon Config</h1>
+                <tabs
+                    :tabs = [{name:"Wi-Fi",uid:"#wifi"},{name:"Calibration",uid:"#calibration"},{name:"Firmware",uid:"#firmware"}]        
+                ></tabs>
+            </div>
+            <div class="pagesection">
+                <wifi-list></wifi-list>
+            </div>
+            
+            <button id="show-modal" @click="showModal = true">Show Modal</button>
+              <!-- use the modal component, pass in the prop -->
+              <modal v-if="showModal" @close="showModal = false">
+            
+        </div>
+        
+        
+        <script  type="text/javascript" src="scripts.min.js"></script>
+	</body>
+</html>
