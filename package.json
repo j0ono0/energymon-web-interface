@@ -14,9 +14,10 @@
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
     "node-sass": "^4.9.0",
-    "uglify-js": "^3.3.25"
+    "uglify-js": "^3.3.26"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "hoek": "^4.2.1"
   }
 }
