@@ -29,5 +29,5 @@ Vue.component('wifi-list', {
     created: function created() {
         this.get_wifi('/wifi.json');
     },
-    template: '\n        <div class="wifilist">\n            <p v-if="message != null">{{ message }}</p>\n            <ul>\n                <li v-for="network in availableWiFi">\n                    <p>{{ network.name }} ({{ network.strength }})</p>\n                </li>\n            </ul>\n        </div>\n    '
+    template: '\n        <div class="wifilist">\n            <p v-if="message != null">{{ message }}</p>\n            <ul>\n                <li v-for="network in availableWiFi">\n                    <a href="#">{{ network.name }} ({{ network.strength }})</a>\n                </li>\n                \n                <li>\n                    <a href="#">[+] Add network</a>\n                </li>\n            </ul>\n        </div>\n    '
 });

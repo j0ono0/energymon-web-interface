@@ -32,7 +32,11 @@ Vue.component('wifi-list',{
             <p v-if="message != null">{{ message }}</p>
             <ul>
                 <li v-for="network in availableWiFi">
-                    <p>{{ network.name }} ({{ network.strength }})</p>
+                    <a href="#">{{ network.name }} ({{ network.strength }})</a>
+                </li>
+                
+                <li>
+                    <a href="#">[+] Add network</a>
                 </li>
             </ul>
         </div>

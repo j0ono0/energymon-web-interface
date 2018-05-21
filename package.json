@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "scss_dev": "scss --watch src/styles/scss/SASS_manifest.scss:src/styles/styles.css",
+    "server_dev": "node ./server.js src",
+    "server": "node ./server.js",
     "scss": "scss src/styles/scss/SASS_manifest.scss:dist/styles.css",
     "babel": "babel src/scripts -d src/temp",
-    "uglify": "uglifyjs  src/scripts/vue.min.js src/temp/components/*.js src/temp/vue_app.js -o dist/scripts.min.js"
+    "uglify": "uglifyjs  src/vendor/vue.min.js src/temp/components/*.js src/temp/vue_app.js -o dist/scripts.min.js"
   },
   "keywords": [],
   "author": "",
