@@ -11,14 +11,19 @@ body {
   margin: 0;
   background: #f4f4f4;
   font-family: verdana,arial,sans-serif;
-  font-size: 12px; }
+  font-size: 14px; }
 
 .pagesection {
-  overflow: hidden; }
+  overflow: hidden;
+  margin: 16px; }
 
 .pagesection > * {
   margin: auto;
   max-width: 700px; }
+
+.component {
+  border: 1px solid #ccc;
+  padding: 16px; }
 
 /* Tabs */
 .tabs {
@@ -110,6 +115,23 @@ body {
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1); }
+
+.navlist {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .navlist li + li {
+    border-top: 1px solid #e8e8e8; }
+  .navlist a {
+    color: #000;
+    display: block;
+    padding: 8px;
+    text-decoration: none; }
+  .navlist a:hover {
+    background: #e4e7ed; }
+
+.navlist + .navlist {
+  border-top: 1px solid #ccc; }
 
 /* TEMPORARY STYLES TO TEST THINGS OUT */
 /* page layout */

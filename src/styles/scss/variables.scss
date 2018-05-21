@@ -1,7 +1,11 @@
 
 /* Common measurement units (u_ prefix) */;
 $u: 16px;
+$u_sm: $u/2;
 
 /* colour palette */
 $grey_xdk: #1a1a1a;
 $grey_lt: #ccc;
+$grey_xlt: #e8e8e8;
+
+$blue_xlt: #e4e7ed;

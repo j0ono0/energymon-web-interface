@@ -2,13 +2,19 @@ body{
     margin: 0;
     background: #f4f4f4;
     font-family: verdana,arial,sans-serif;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .pagesection{
     overflow: hidden;
+    margin: $u;
 }
 .pagesection > *{
     margin: auto;
     max-width: 700px;    
+}
+
+.component{
+    border: 1px solid $grey_lt;
+    padding: $u;
 }

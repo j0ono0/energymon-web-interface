@@ -9,28 +9,36 @@
         <title>Whatnick: Energy Monitor</title>
     </head>
 	<body>
-    <h1>dev site</h1>
+    <h1>dev site asfsf</h1>
         <div id="application">
             <div class="banner pagesection">
                 <h1 class="banner__title">Whatnick. Energymon Config</h1>
-                <tabs
-                    :tabs = [{name:"Wi-Fi",uid:"#wifi"},{name:"Calibration",uid:"#calibration"},{name:"Firmware",uid:"#firmware"}]        
-                ></tabs>
             </div>
             <div class="pagesection">
-                <wifi-list></wifi-list>
+                <div class="component">
+                    <wifi-list></wifi-list>
+                </div>
+            </div>
+            
+            <div class="pagesection">
+                <div class="component">
+                    <navlist
+                        :items = sitesections
+                        content_key = "heading"
+                    ></navlist>
+                </div>
             </div>
             
             <button id="show-modal" @click="showModal = true">Show Modal</button>
               <!-- use the modal component, pass in the prop -->
               <modal v-if="showModal" @close="showModal = false">
-            
         </div>
         
         <script  type="text/javascript" src="vendor/vue_development.js"></script>
         <script  type="text/javascript" src="scripts/components/modal.js"></script>
         <script  type="text/javascript" src="scripts/components/wifi-list.js"></script>
         <script  type="text/javascript" src="scripts/components/tabs.js"></script>
+        <script  type="text/javascript" src="scripts/components/navlist.js"></script>
         <script  type="text/javascript" src="scripts/vue_app.js"></script>
         <!-- <script  type="text/javascript" src="scripts.min.js"></script> -->
 	</body>

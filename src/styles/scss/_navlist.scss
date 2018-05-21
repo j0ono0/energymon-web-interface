@@ -1,0 +1,23 @@
+.navlist{
+
+    list-style: none;
+    margin: 0;
+    padding:0;
+
+    li + li{
+        border-top: 1px solid $grey_xlt;
+    }
+    a{
+        color: #000;
+        display: block;
+        padding: $u_sm;
+        text-decoration: none;
+    }
+    a:hover{
+        background: $blue_xlt;
+    }
+}
+
+.navlist + .navlist{
+    border-top: 1px solid $grey_lt;
+}
