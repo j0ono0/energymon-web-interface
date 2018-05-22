@@ -8,5 +8,13 @@
 
 body{
     margin: 0;
+    background: #f4f4f4;
+    font-family: verdana,arial,sans-serif;
+    font-size: 14px;
+}
+
+.smalltext{
+    font-size: 11px;
+    color: $grey;
 }
 

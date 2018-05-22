@@ -12,18 +12,35 @@
         <div id="application">
             <div class="banner pagesection">
                 <h1 class="banner__title">Whatnick. Energymon Config</h1>
-                <tabs
-                    :tabs = [{name:"Wi-Fi",uid:"#wifi"},{name:"Calibration",uid:"#calibration"},{name:"Firmware",uid:"#firmware"}]        
-                ></tabs>
             </div>
             <div class="pagesection">
-                <wifi-list></wifi-list>
+                <div class="component">
+                    <wifi-list
+                        :networks = "networks"
+                    ></wifi-list>
+                </div>
             </div>
             
-            <button id="show-modal" @click="showModal = true">Show Modal</button>
-              <!-- use the modal component, pass in the prop -->
-              <modal v-if="showModal" @close="showModal = false">
+            <div class="pagesection">
+                <div class="component">
+                    <navlist
+                        :items = sitesections
+                        content_key = "heading"
+                    ></navlist>
+                </div>
+            </div>
             
+            <div class="pagesection">
+                <div class="component">
+                    <form-network></form-network>
+                </div>
+            </div>
+            <div class="pagesection">
+                <div class="component">
+                    <form-logging></form-logging>
+                </div>
+            </div>
+
         </div>
         
         

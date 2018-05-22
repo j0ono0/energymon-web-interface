@@ -5,13 +5,14 @@
   box-sizing: border-box; }
 
 body {
-  margin: 0; }
-
-body {
   margin: 0;
   background: #f4f4f4;
   font-family: verdana,arial,sans-serif;
   font-size: 14px; }
+
+.smalltext, .navlist .details, label {
+  font-size: 11px;
+  color: #999; }
 
 .pagesection {
   overflow: hidden;
@@ -22,6 +23,7 @@ body {
   max-width: 700px; }
 
 .component {
+  background: #fff;
   border: 1px solid #ccc;
   padding: 16px; }
 
@@ -129,9 +131,27 @@ body {
     text-decoration: none; }
   .navlist a:hover {
     background: #e4e7ed; }
+  .navlist .details {
+    float: right; }
 
 .navlist + .navlist {
   border-top: 1px solid #ccc; }
+
+/* Forms */
+label {
+  line-height: 1.6; }
+
+label > * {
+  color: #000;
+  display: block; }
+
+input[type="text"],
+input[type="password"],
+select {
+  border: 1px solid #ccc;
+  max-width: 100%;
+  padding: 4px;
+  width: 300px; }
 
 /* TEMPORARY STYLES TO TEST THINGS OUT */
 /* page layout */
@@ -148,17 +168,5 @@ th {
 
 .table--a tr + tr {
   border-top: 1px dotted #ccc; }
-
-/* Form elements */
-label {
-  display: block;
-  padding: 5px;
-  overflow: hidden;
-  width: 100%; }
-
-input[type="text"] {
-  float: right;
-  max-width: 100%;
-  width: 300px; }
 
 /*# sourceMappingURL=styles.css.map */

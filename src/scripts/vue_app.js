@@ -1,19 +1,11 @@
-Vue.component('alert',{
-    props:{
-        message: [String]
-    },
-    template:`
-        <div class="alert">
-            <p>{{ message }}</p>
-        </div>
-    `
-});
+
+// eventHub: Common communication channel for components
+var eventHub = new Vue()
 
 var app = new Vue({
     el: '#application',
     data: {
         message: 'Replace this message!',
-        showModal: false,
         sitesections:[
             {
                 "heading":"Network"
@@ -25,26 +17,31 @@ var app = new Vue({
                 "heading":"Firmware & information"
             }
         ],
-        remembered_networks:[
-            {
-                "name":"TelstraE2C8",
-                "password": "********",
-                "connected":true
-            }, {
-                "name":"Hal-North",
-                "password": "********",
-                "connected":false
-            }, {
-                "name":"black-ops_hidden",
-                "password": "*************",
-                "connected":false
-            }
-        ]
+        networks:[]
     },
     methods:{
-        
+        fetchData: function(url,callback){
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = function(){
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status === 200) {
+                        var response = JSON.parse(httpRequest.responseText)
+                        callback(response);
+                    } else {
+                        //TO-DO: add alert UI for end user
+                        console.log('failed to get json feed.');
+                    }
+                }
+            }.bind(this);
+            httpRequest.open('GET', url);
+            httpRequest.send();
+        },
+        set_networks: function(response){
+            this.networks = response.data;
+        },
     },
     created: function(){
-
+        this.fetchData('/networks.json', this.set_networks);
+        
     },
 })

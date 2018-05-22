@@ -16,6 +16,10 @@
     a:hover{
         background: $blue_xlt;
     }
+    .details{
+        @extend .smalltext;
+        float: right;
+    }
 }
 
 .navlist + .navlist{

@@ -16,7 +16,9 @@
             </div>
             <div class="pagesection">
                 <div class="component">
-                    <wifi-list></wifi-list>
+                    <wifi-list
+                        :networks = "networks"
+                    ></wifi-list>
                 </div>
             </div>
             
@@ -29,9 +31,17 @@
                 </div>
             </div>
             
-            <button id="show-modal" @click="showModal = true">Show Modal</button>
-              <!-- use the modal component, pass in the prop -->
-              <modal v-if="showModal" @close="showModal = false">
+            <div class="pagesection">
+                <div class="component">
+                    <form-network></form-network>
+                </div>
+            </div>
+            <div class="pagesection">
+                <div class="component">
+                    <form-logging></form-logging>
+                </div>
+            </div>
+
         </div>
         
         <script  type="text/javascript" src="vendor/vue_development.js"></script>
@@ -39,6 +49,7 @@
         <script  type="text/javascript" src="scripts/components/wifi-list.js"></script>
         <script  type="text/javascript" src="scripts/components/tabs.js"></script>
         <script  type="text/javascript" src="scripts/components/navlist.js"></script>
+        <script  type="text/javascript" src="scripts/components/forms.js"></script>
         <script  type="text/javascript" src="scripts/vue_app.js"></script>
         <!-- <script  type="text/javascript" src="scripts.min.js"></script> -->
 	</body>

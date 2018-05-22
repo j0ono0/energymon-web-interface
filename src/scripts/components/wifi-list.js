@@ -1,40 +1,51 @@
 Vue.component('wifi-list',{
-
+    props:{
+        networks: Array
+    },
     data: function(){
         return{
             message: "Locating WiFi networks...",
-            availableWiFi: [],
         }
     },
     methods:{
-        get_wifi: function(url){
-            var httpRequest = new XMLHttpRequest();
-            httpRequest.onreadystatechange = function(){
-                if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    if (httpRequest.status === 200) {
-                        var response = JSON.parse(httpRequest.responseText)
-                        this.message = null;
-                        this.availableWiFi = response.data;
-                    } else {
-                        this.message = 'There was communication problem whilst contacting your Energymon device. Reload this page to try again.';
-                    }
-                }
-            }.bind(this);
-            httpRequest.open('GET', url);
-            httpRequest.send();
+        link_activated: function(netid){
+            eventHub.$emit('network_select',netid)
         },
     },
-    created: function(){
-        this.get_wifi('/wifi.json');
+    computed:{
+        sorted_networks: function(){
+           
+            // Sort 1)connected, 2)remembered, 3)visible
+            this.networks.sort(function(a,b){
+                // Connected
+                if(a.connected===true){
+                    return 0;
+                }else if (b.connected===true){
+                    return 1;
+                }
+                // Has pwd
+                if(a.pwd){
+                    return 0;
+                }else if(b.pwd){
+                    return 1;
+                }
+                return 0;
+            });
+            return this.networks;
+        },
+        
     },
     template:` 
         <div class="wifilist">
-        
-            <navlist
-                :items = this.availableWiFi
-                content_key = "name"
-            ></navlist>
-            
+            <ul class="navlist">
+                <li v-for="(network, key) in sorted_networks">
+                    <a v-on:click.prevent="link_activated(key)" href="#">
+                        {{ network.name }}
+                        <span v-if="network.connected" class="details"> Connected</span>
+                        <span v-else-if="network.pwd" class="details"> Remembered</span>
+                    </a>
+                </li>
+            </ul>
             <ul class="navlist">
                 <li>
                     <a href="#">[+] Add network</a>

@@ -1,0 +1,22 @@
+/* Forms */
+
+label{
+    @extend .smalltext;
+    line-height: 1.6;
+}
+
+label > * {
+    color: #000;
+    display: block;
+}
+
+
+
+input[type="text"],
+input[type="password"],
+select{
+    border: 1px solid $grey_lt;
+    max-width: 100%;
+    padding: $u_xs;
+    width: 300px;
+}

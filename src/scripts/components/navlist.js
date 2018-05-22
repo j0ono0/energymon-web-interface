@@ -4,9 +4,19 @@ Vue.component('navlist-item',{
         content: [String, Number],
         href: [String]
     },
+    methods:{
+        nav: function(val){
+            eventHub.$emit('nav',val);
+        }
+    },
     template:`
         <li>
-            <a :href="href">{{ content }}</a>
+            <a 
+                v-on:click.prevent="nav(content)"
+                :href="href"
+            >
+                {{ content }}
+            </a>
         </li>
     `
 });
@@ -20,7 +30,6 @@ Vue.component('navlist',{
     },
     methods:{
         getContent: function(item){
-            console.log(item);
             return item[this.content_key]; 
         }
     },
