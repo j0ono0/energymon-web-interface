@@ -43,13 +43,13 @@ Vue.component('wifi-list',{
             netlist.sort(function(a,b){
                 // Connected
                 if(a.connected===true){
-                    return 0;
+                    return -1;
                 }else if (b.connected===true){
                     return 1;
                 }
                 // Has pwd
                 if(a.pwd){
-                    return 0;
+                    return -1;
                 }else if(b.pwd){
                     return 1;
                 }
