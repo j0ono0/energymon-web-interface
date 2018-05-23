@@ -76,7 +76,7 @@ Vue.component('wifi-list',{
             </ul>
             <ul class="navlist">
                 <li>
-                    <a v-on:click.prevent="link_activated(key)" href="#">[+] Add network</a>
+                    <a v-on:click.prevent="link_activated()" href="#">[+] Add network</a>
                 </li>
             </ul>
             
