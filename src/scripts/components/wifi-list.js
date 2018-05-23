@@ -10,26 +10,33 @@ Vue.component('wifi-list',{
     methods:{
         link_activated: function(network){
             eventHub.$emit('network_selected',network)
-        },
+        }
     },
     computed:{
         sorted_networks: function(){
             //Container to merge found and saved network lists
-            var netlist = this.networks.found;
+            var netlist = [];
+            for(i=0; i < this.networks.found.length; i++){
+                netlist.push(this.networks.found[i]);
+            }            
             
-            //Extract list of found network names for easier cross-checking
-            var found_names = [];
-            for(var i=0; i < netlist; i++){
-                found_names.push(netlist[i].name);
+            //Extract list of network names for easier cross-checking
+            var names = [];
+            for(i=0; i < this.networks.found.length; i++){
+                names.push(netlist[i].name);
             }
-            
+            ;
             //Merge saved networks into netlist 
             for(var i=0; i < this.networks.saved.length; i++){
-                var j = found_names.indexOf(this.networks.saved[i].name)
-                if(j === -1){
-                    this.networks.found.push(this.networks.saved[i]);
+                var index = names.indexOf(this.networks.saved[i].name);
+            console.log(index)
+                if(index === -1){
+                    netlist.push(this.networks.saved[i]); 
+                    names.push(this.networks.saved[i].name);
                 }else{
-                    Array.prototype.push.apply(this.networks.found[j],this.networks.saved[i]);
+                    for(prop in this.networks.saved[i]){
+                        Vue.set(netlist[index], prop, this.networks.saved[i][prop]);
+                    };
                 }
             }
             
@@ -50,6 +57,7 @@ Vue.component('wifi-list',{
                 return 0;
             });
 
+                    console.log(typeof(netlist));
             return netlist;
         },
     },
@@ -58,8 +66,7 @@ Vue.component('wifi-list',{
             <ul class="navlist">
                 <li 
                     v-for="(network, key) in sorted_networks"
-                    :key="network.id"
-                >{{ key }})
+                >
                     <a 
                         v-on:click.prevent="link_activated(network)" href="#"
                     >

@@ -28,7 +28,10 @@ var networks_saved = [
             "pwd":"sshhhhhhh!"
         },{
             "name":"Telstra2EC8",
-            "pwd":"high-5ecurity",
+            "pwd":"high-5ecurity"
+        },{
+            "name":"TGP fastAir",
+            "pwd":"nevaguess;P",
             "connected": true
         }
     ];

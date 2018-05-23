@@ -37,6 +37,7 @@ var app = new Vue({
             httpRequest.send();
         },
         set_networks: function(response){
+            
             this.networks = response;
         },
     },
