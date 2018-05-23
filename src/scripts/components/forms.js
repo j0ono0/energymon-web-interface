@@ -7,13 +7,18 @@ Vue.component('form-network',{
         }
     },
     methods:{
-        update_form(netid){
-            this.ssid = app.networks[netid].name;
-            this.pwd = app.networks[netid].pwd;
+        update_form(network){
+            if(network){
+                this.ssid = network.name;
+                this.pwd = network.pwd;
+            }else{
+                this.ssid = '';
+                this.pwd = '';
+            }
         }
     },
     created: function(){
-        eventHub.$on('network_select', this.update_form);
+        eventHub.$on('network_selected', this.update_form);
     },
     template:`
         <form id="form form__network">
