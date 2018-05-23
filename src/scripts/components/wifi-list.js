@@ -29,7 +29,6 @@ Vue.component('wifi-list',{
             //Merge saved networks into netlist 
             for(var i=0; i < this.networks.saved.length; i++){
                 var index = names.indexOf(this.networks.saved[i].name);
-            console.log(index)
                 if(index === -1){
                     netlist.push(this.networks.saved[i]); 
                     names.push(this.networks.saved[i].name);
@@ -56,8 +55,7 @@ Vue.component('wifi-list',{
                 }
                 return 0;
             });
-
-                    console.log(typeof(netlist));
+            
             return netlist;
         },
     },

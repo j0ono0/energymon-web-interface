@@ -14,6 +14,9 @@ body {
   font-size: 11px;
   color: #999; }
 
+h2, p {
+  margin: 16px 0; }
+
 .pagesection {
   overflow: hidden;
   margin: 16px; }
@@ -145,7 +148,19 @@ label > * {
   color: #000;
   display: block; }
 
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+  fieldset > *:first-child {
+    margin-top: 0; }
+
+fieldset + fieldset {
+  border-top: 1px solid #ccc;
+  padding-top: 16px; }
+
 input[type="text"],
+input[type="number"],
 input[type="password"],
 select {
   border: 1px solid #ccc;

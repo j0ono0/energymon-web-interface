@@ -16,7 +16,24 @@ var app = new Vue({
         }, {
             "heading": "Firmware & information"
         }],
-        networks: []
+        networks: {
+            "saved": [],
+            "found": []
+        },
+        config: {
+            EIC1: {
+                crc1: 7,
+                crc2: 8,
+                gain: 9,
+                ugain: 10
+            },
+            EIC2: {
+                crc1: 1,
+                crc2: 2,
+                gain: 3,
+                ugain: 4
+            }
+        }
     },
     methods: {
         fetchData: function fetchData(url, callback) {
@@ -36,7 +53,8 @@ var app = new Vue({
             httpRequest.send();
         },
         set_networks: function set_networks(response) {
-            this.networks = response.data;
+
+            this.networks = response;
         }
     },
     created: function created() {

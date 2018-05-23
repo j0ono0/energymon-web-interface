@@ -17,7 +17,24 @@ var app = new Vue({
                 "heading":"Firmware & information"
             }
         ],
-        networks:{"saved":[],"found":[]}
+        networks:{
+            "saved":[],
+            "found":[]
+        },
+        config: {
+            EIC1:{
+                crc1:7,
+                crc2:8,
+                gain:9,
+                ugain:10
+            },
+            EIC2:{
+                crc1:1,
+                crc2:2,
+                gain:3,
+                ugain:4
+            },
+        }
     },
     methods:{
         fetchData: function(url,callback){

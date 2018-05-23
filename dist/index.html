@@ -13,13 +13,6 @@
             <div class="banner pagesection">
                 <h1 class="banner__title">Whatnick. Energymon Config</h1>
             </div>
-            <div class="pagesection">
-                <div class="component">
-                    <wifi-list
-                        :networks = "networks"
-                    ></wifi-list>
-                </div>
-            </div>
             
             <div class="pagesection">
                 <div class="component">
@@ -32,12 +25,28 @@
             
             <div class="pagesection">
                 <div class="component">
+                    <wifi-list
+                        :networks = "networks"
+                    ></wifi-list>
+                </div>
+            </div>
+            
+            
+            <div class="pagesection">
+                <div class="component">
                     <form-network></form-network>
                 </div>
             </div>
             <div class="pagesection">
                 <div class="component">
                     <form-logging></form-logging>
+                </div>
+            </div>
+            <div class="pagesection">
+                <div class="component">
+                    <form-device
+                        :config = "config"
+                    ></form-device>
                 </div>
             </div>
 
