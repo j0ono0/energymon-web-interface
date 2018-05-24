@@ -1,9 +1,28 @@
 
+
+
+
+// Router setup
+const Foo = { template: '<div>foo</div>' }
+const Bar = { template: '<div>bar</div>' }
+
+console.log(Vue.navlist);
+
+const routes = [
+  { path: '/foo', component: Foo },
+  { path: '/bar', component: Bar }
+]
+
+const router = new VueRouter({
+  routes: routes
+})
+
 // eventHub: Common communication channel for components
 var eventHub = new Vue()
 
 var app = new Vue({
     el: '#application',
+    router,
     data: {
         message: 'Replace this message!',
         sitesections:[

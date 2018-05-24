@@ -30,7 +30,7 @@ Vue.component('form-device',{
             <form class="form form__firmaware">
                 <p>Current firmware version: {{ config.firmware }}</p>
                 <p><button>Update firmware</button></p>
-            </form
+            </form>
         </div>
     `
 });
