@@ -60,26 +60,25 @@ Vue.component('wifi-list',{
         },
     },
     template:` 
-        <div class="wifilist">
-            <ul class="navlist">
-                <li 
-                    v-for="(network, key) in sorted_networks"
-                >
-                    <a 
-                        v-on:click.prevent="link_activated(network)" href="#"
+            <div class="wifilist">
+                <ul class="navlist">
+                    <li 
+                        v-for="(network, key) in sorted_networks"
                     >
-                        {{ network.name }}
-                        <span v-if="network.connected" class="details"> Connected</span>
-                        <span v-else-if="network.pwd" class="details"> Remembered</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="navlist">
-                <li>
-                    <a v-on:click.prevent="link_activated()" href="#">[+] Add network</a>
-                </li>
-            </ul>
-            
-        </div>
+                        <a 
+                            v-on:click.prevent="link_activated(network)" href="#"
+                        >
+                            {{ network.name }}
+                            <span v-if="network.connected" class="details"> Connected</span>
+                            <span v-else-if="network.pwd" class="details"> Remembered</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navlist">
+                    <li>
+                        <a v-on:click.prevent="link_activated()" href="#">[+] Add network</a>
+                    </li>
+                </ul>
+            </div>
     `
 });

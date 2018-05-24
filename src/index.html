@@ -15,43 +15,47 @@
                 <h1 class="banner__title">Whatnick. Energymon Config</h1>
             </div>
             
-            <div class="pagesection">
-                <div class="component">
+            <block>
+                <template slot="header">Menu</template>
+                <template slot="main">
                     <navlist
                         :items = sitesections
                         content_key = "heading"
                     ></navlist>
-                </div>
-            </div>
+                </template>
+            </block>
             
-            <div class="pagesection">
-                <div class="component">
+            <block>
+                <template slot="header">Networks</template>
+                <template slot="main">
                     <wifi-list
                         :networks = "networks"
                     ></wifi-list>
-                </div>
-            </div>
-            
-            
-            <div class="pagesection">
-                <div class="component">
                     <form-network></form-network>
-                </div>
-            </div>
-            <div class="pagesection">
-                <div class="component">
+                </template>
+            </block>
+            
+            <block>
+                <template slot="header">Data logging</template>
+                <template slot="main">
                     <form-logging></form-logging>
-                </div>
-            </div>
-            <div class="pagesection">
-                <form-device
-                    :config = "config"
-                ></form-device>
-            </div>
+                </template>
+            </block>
+            
+            <block>
+                <template slot="header">Device configuration</template>
+                <template slot="main">
+                    <form-device
+                        :config = "config"
+                    ></form-device>
+                </template>
+            </block>
+            
 
         </div>
         
         <script  type="text/javascript" src="vendor/vue_development.js"></script>
+        <script  type="text/javascript" src="scripts/components/block.js"></script>
         <script  type="text/javascript" src="scripts/components/modal.js"></script>
         <script  type="text/javascript" src="scripts/components/wifi-list.js"></script>
         <script  type="text/javascript" src="scripts/components/tabs.js"></script>
