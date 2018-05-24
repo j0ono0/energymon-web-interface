@@ -7,6 +7,14 @@ Vue.component('form-logging',{
             aws_region: ''
         }
     },
+    computed:{
+        formValid: function(){
+            if(this.service != "-- No service selected --"){
+                return true;
+            }
+            return false;
+        },
+    },
     template:`
         <form id="form form__logging">
             <p>
@@ -47,7 +55,7 @@ Vue.component('form-logging',{
                     </label>
                 </p>
             </template>
-            <p><button>Cancel</button> <button>Save</button></p>
+            <p><button>Cancel</button> <button v-bind:disabled="!formValid">Save</button></p>
         </form>
     `
 });
