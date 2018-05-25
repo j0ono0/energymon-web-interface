@@ -1,5 +1,5 @@
 
-Vue.component('navlist-item',{
+var navlistItem = {
     props:{
         content: [String, Number],
         href: [String]
@@ -19,11 +19,12 @@ Vue.component('navlist-item',{
             </a>
         </li>
     `
-});
+};
 
-
-
-Vue.component('navlist',{
+var navlist = {
+    components: {
+        'navlist-item': navlistItem
+    },
     props: {
         items: Array,
         content_key: String
@@ -43,4 +44,4 @@ Vue.component('navlist',{
             ></navlist-item>
         </ul>
     `
-});
+};

@@ -67,6 +67,19 @@ h2, p {
   font-weight: 400;
   padding: 10px; }
 
+button {
+  background: none;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 16px; }
+  button:hover {
+    background: #f4f8ff;
+    cursor: pointer; }
+  button:disabled {
+    background: none;
+    color: #ccc; }
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -133,7 +146,7 @@ h2, p {
     padding: 8px;
     text-decoration: none; }
   .navlist a:hover {
-    background: #e4e7ed; }
+    background: #f4f8ff; }
   .navlist .details {
     float: right; }
 
@@ -167,21 +180,5 @@ select {
   max-width: 100%;
   padding: 4px;
   width: 300px; }
-
-/* TEMPORARY STYLES TO TEST THINGS OUT */
-/* page layout */
-/* tables*/
-.table {
-  border-collapse: collapse;
-  width: 100%; }
-
-th {
-  text-align: left; }
-
-.table td {
-  padding: 5px 2px; }
-
-.table--a tr + tr {
-  border-top: 1px dotted #ccc; }
 
 /*# sourceMappingURL=styles.css.map */

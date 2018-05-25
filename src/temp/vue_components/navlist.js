@@ -1,6 +1,6 @@
 'use strict';
 
-Vue.component('navlist-item', {
+var navlistItem = {
     props: {
         content: [String, Number],
         href: [String]
@@ -11,9 +11,12 @@ Vue.component('navlist-item', {
         }
     },
     template: '\n        <li>\n            <a \n                v-on:click.prevent="nav(content)"\n                :href="href"\n            >\n                {{ content }}\n            </a>\n        </li>\n    '
-});
+};
 
-Vue.component('navlist', {
+var navlist = {
+    components: {
+        'navlist-item': navlistItem
+    },
     props: {
         items: Array,
         content_key: String
@@ -24,4 +27,4 @@ Vue.component('navlist', {
         }
     },
     template: '\n        <ul class="navlist">\n            <navlist-item \n                v-for = "item in items" \n                :key="item.id"\n                :content = "getContent(item)"\n                href = "#"\n            ></navlist-item>\n        </ul>\n    '
-});
+};

@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 
+
 var networks_found = [
         {
             "name":"Fon WiFi",
@@ -36,19 +37,29 @@ var networks_saved = [
         }
     ];
 
+// Get root directory for application
+var path = require('path');
+var appPath = path.dirname(require.main.filename);
+
 // Select "src" folder if CLI arg present
 if(process.argv[2] === "src"){
     app.use(express.static('src'));
+    appPath += '/src';
 }else{
-    app.use(express.static('dist'));    
+    app.use(express.static('dist'));  
+    appPath += '/dist';  
 }
 
-app.get('/', (req, res) => res.send('Hello World!'));
 app.get('/networks.json', (req, res) => res.json(
     {
         "saved": networks_saved,
         "found": networks_found
     }
 ));
+
+app.get('*', function(req, res) {
+    res.sendFile(appPath + '/index.html');
+});
+
 
 app.listen(3000, () => console.log('Express listening on port 3000'));

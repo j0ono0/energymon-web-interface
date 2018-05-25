@@ -1,4 +1,4 @@
-Vue.component('form-logging',{
+var form_logging = {
     data: function(){
         return {
             service : '-- No service selected --',
@@ -55,7 +55,12 @@ Vue.component('form-logging',{
                     </label>
                 </p>
             </template>
-            <p><button>Cancel</button> <button v-bind:disabled="!formValid">Save</button></p>
+            <p>
+            <router-link 
+                :to="{name:'menu'}"
+                tag="button"
+            >Cancel</router-link>
+            <button v-bind:disabled="!formValid">Save</button></p>
         </form>
     `
-});
+}

@@ -12,69 +12,46 @@
     <h1>dev site</h1>
         <div id="application">
         <p>
-            <!-- use router-link component for navigation. -->
-            <!-- specify the link by passing the `to` prop. -->
-            <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
-            <router-link to="/foo">Go to Foo</router-link>
-            <router-link to="/bar">Go to Bar</router-link>
+            
+            <router-link 
+                :to="{name:'menu', params:{ networks:networks, config:config }}"
+            >Main menu</router-link>
+            
+            <router-link 
+                :to="{name:'network_list', params:{ networks:networks }}"
+            >Networks</router-link>
+            
+            <router-link 
+                :to="{name:'ui_logging', params:{ networks:networks }}"
+            >Data logging</router-link>
+            
+            <router-link 
+                :to="{name:'ui_device', params:{ config:config }}"
+            >Device</router-link>
           </p>
-          <!-- route outlet -->
-          <!-- component matched by the route will render here -->
-          <router-view></router-view>
-
+          
         
             <div class="banner pagesection">
                 <h1 class="banner__title">Whatnick. Energymon Config</h1>
             </div>
             
-            <block>
-                <template slot="header">Menu</template>
-                <template slot="main">
-                    <navlist
-                        :items = sitesections
-                        content_key = "heading"
-                    ></navlist>
-                </template>
-            </block>
-            
-            <block>
-                <template slot="header">Networks</template>
-                <template slot="main">
-                    <wifi-list
-                        :networks = "networks"
-                    ></wifi-list>
-                    <form-network></form-network>
-                </template>
-            </block>
-            
-            <block>
-                <template slot="header">Data logging</template>
-                <template slot="main">
-                    <form-logging></form-logging>
-                </template>
-            </block>
-            
-            <block>
-                <template slot="header">Device configuration</template>
-                <template slot="main">
-                    <form-device
-                        :config = "config"
-                    ></form-device>
-                </template>
-            </block>
+            <router-view></router-view>
 
         </div>
-        
+        <!-- Vuejs -->
         <script  type="text/javascript" src="vendor/vue_development.js"></script>
-        <script  type="text/javascript" src="scripts/components/vue-router.js"></script>
-        <script  type="text/javascript" src="scripts/components/block.js"></script>
-        <script  type="text/javascript" src="scripts/components/modal.js"></script>
-        <script  type="text/javascript" src="scripts/components/wifi-list.js"></script>
-        <script  type="text/javascript" src="scripts/components/tabs.js"></script>
-        <script  type="text/javascript" src="scripts/components/navlist.js"></script>
-        <script  type="text/javascript" src="scripts/components/form_logging.js"></script>
-        <script  type="text/javascript" src="scripts/components/form_network.js"></script>
-        <script  type="text/javascript" src="scripts/components/form_device.js"></script>
+        <script  type="text/javascript" src="vendor/vue-router.js"></script>
+        <!-- Components -->
+        <script  type="text/javascript" src="vue_components/block.js"></script>
+        <script  type="text/javascript" src="vue_components/navlist.js"></script>
+        <script  type="text/javascript" src="vue_components/form_logging.js"></script>
+        <script  type="text/javascript" src="vue_components/form_network.js"></script>
+        <!-- UIs -->
+        <script  type="text/javascript" src="vue_components/ui_logging.js"></script>
+        <script  type="text/javascript" src="vue_components/ui_device.js"></script>
+        <script  type="text/javascript" src="vue_components/network_list.js"></script>
+        <script  type="text/javascript" src="vue_components/ui_menu.js"></script>
+        <!-- Application -->
         <script  type="text/javascript" src="scripts/vue_app.js"></script>
 	</body>
 </html>

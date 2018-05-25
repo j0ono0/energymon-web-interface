@@ -1,4 +1,4 @@
-Vue.component('form-network',{
+var form_network = {
     props:{
         //network: Object
     },
@@ -55,4 +55,4 @@ Vue.component('form-network',{
             <p><button>Cancel</button> <button v-bind:disabled="!formValid">{{ btn_text }}</button></p>
         </form>
     `
-});
+}

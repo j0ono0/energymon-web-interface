@@ -1,6 +1,11 @@
 'use strict';
 
-Vue.component('wifi-list', {
+var network_list = {
+    components: {
+        'block': block,
+        'form_network': form_network,
+        'navlist': navlist
+    },
     props: {
         networks: Object
     },
@@ -45,13 +50,13 @@ Vue.component('wifi-list', {
             netlist.sort(function (a, b) {
                 // Connected
                 if (a.connected === true) {
-                    return 0;
+                    return -1;
                 } else if (b.connected === true) {
                     return 1;
                 }
                 // Has pwd
                 if (a.pwd) {
-                    return 0;
+                    return -1;
                 } else if (b.pwd) {
                     return 1;
                 }
@@ -61,5 +66,5 @@ Vue.component('wifi-list', {
             return netlist;
         }
     },
-    template: ' \n        <div class="wifilist">\n            <ul class="navlist">\n                <li \n                    v-for="(network, key) in sorted_networks"\n                >\n                    <a \n                        v-on:click.prevent="link_activated(network)" href="#"\n                    >\n                        {{ network.name }}\n                        <span v-if="network.connected" class="details"> Connected</span>\n                        <span v-else-if="network.pwd" class="details"> Remembered</span>\n                    </a>\n                </li>\n            </ul>\n            <ul class="navlist">\n                <li>\n                    <a v-on:click.prevent="link_activated(key)" href="#">[+] Add network</a>\n                </li>\n            </ul>\n            \n        </div>\n    '
-});
+    template: ' \n        <block>\n            \n            <template slot="header">Networks</template>\n            \n            <template slot="main">\n                <div class="wifilist">\n                    <ul class="navlist">\n                        <li \n                            v-for="(network, key) in sorted_networks"\n                        >\n                            <a \n                                v-on:click.prevent="link_activated(network)" href="#"\n                            >\n                                {{ network.name }}\n                                <span v-if="network.connected" class="details"> Connected</span>\n                                <span v-else-if="network.pwd" class="details"> Remembered</span>\n                            </a>\n                        </li>\n                    </ul>\n                    <ul class="navlist">\n                        <li>\n                            <a v-on:click.prevent="link_activated()" href="#">[+] Add network</a>\n                        </li>\n                    </ul>\n                </div>\n                <form_network></form_network>\n            </template>\n        </block> \n    '
+};

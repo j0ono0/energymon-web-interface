@@ -1,20 +1,29 @@
 
-
-
-
-// Router setup
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
-
-console.log(Vue.navlist);
-
-const routes = [
-  { path: '/foo', component: Foo },
-  { path: '/bar', component: Bar }
-]
-
 const router = new VueRouter({
-  routes: routes
+    mode: 'history',
+    routes: [
+        { 
+            name: 'menu',
+            path: '/', 
+            component: sitemenu, 
+            props: true
+        },{ 
+            name: 'network_list',
+            path: '/networks', 
+            component: network_list, 
+            props: true
+        },{ 
+            name: 'ui_logging',
+            path: '/logging', 
+            component: ui_logging, 
+            props: true
+        },{ 
+            name: 'ui_device',
+            path: '/device', 
+            component: ui_device, 
+            props: true
+        }
+    ]
 })
 
 // eventHub: Common communication channel for components
@@ -22,7 +31,6 @@ var eventHub = new Vue()
 
 var app = new Vue({
     el: '#application',
-    router,
     data: {
         message: 'Replace this message!',
         sitesections:[
@@ -76,12 +84,11 @@ var app = new Vue({
             httpRequest.send();
         },
         set_networks: function(response){
-            
             this.networks = response;
         },
     },
     created: function(){
         this.fetchData('/networks.json', this.set_networks);
-        
     },
+    router,
 })

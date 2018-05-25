@@ -1,5 +1,4 @@
-Vue.component('block',{
-   
+var block = {
     template:`
         <div class="pagesection">
             <div class="component">
@@ -13,4 +12,4 @@ Vue.component('block',{
             </div>
         </div>
     `
-});
+}

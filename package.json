@@ -8,8 +8,8 @@
     "server_dev": "node ./server.js src",
     "server": "node ./server.js",
     "scss": "scss src/styles/scss/SASS_manifest.scss:dist/styles.css",
-    "babel": "babel src/scripts -d src/temp",
-    "uglify": "uglifyjs  src/vendor/vue.min.js src/temp/components/*.js src/temp/vue_app.js -o dist/scripts.min.js"
+    "babel": "babel src/vue_components -d src/temp/vue_components && babel src/scripts -d src/temp ",
+    "uglify": "uglifyjs src/vendor/vue.min.js src/vendor/vue-router.js src/temp/vue_components/*.js src/temp/vue_app.js -o dist/scripts.min.js"
   },
   "keywords": [],
   "author": "",
