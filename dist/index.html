@@ -9,46 +9,32 @@
         <title>Whatnick: Energy Monitor</title>
     </head>
 	<body>
-        <div id="application">
+         <div id="application">
+        <p>
+            
+            <router-link 
+                :to="{name:'menu', params:{ networks:networks, config:config }}"
+            >Main menu</router-link>
+            
+            <router-link 
+                :to="{name:'network_list', params:{ networks:networks }}"
+            >Networks</router-link>
+            
+            <router-link 
+                :to="{name:'ui_logging', params:{ networks:networks }}"
+            >Data logging</router-link>
+            
+            <router-link 
+                :to="{name:'ui_device', params:{ config:config }}"
+            >Device</router-link>
+          </p>
+          
+        
             <div class="banner pagesection">
                 <h1 class="banner__title">Whatnick. Energymon Config</h1>
             </div>
             
-            <div class="pagesection">
-                <div class="component">
-                    <navlist
-                        :items = sitesections
-                        content_key = "heading"
-                    ></navlist>
-                </div>
-            </div>
-            
-            <div class="pagesection">
-                <div class="component">
-                    <wifi-list
-                        :networks = "networks"
-                    ></wifi-list>
-                </div>
-            </div>
-            
-            
-            <div class="pagesection">
-                <div class="component">
-                    <form-network></form-network>
-                </div>
-            </div>
-            <div class="pagesection">
-                <div class="component">
-                    <form-logging></form-logging>
-                </div>
-            </div>
-            <div class="pagesection">
-                <div class="component">
-                    <form-device
-                        :config = "config"
-                    ></form-device>
-                </div>
-            </div>
+            <router-view></router-view>
 
         </div>
         
