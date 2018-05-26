@@ -1,0 +1,7 @@
+.masthead{
+        padding: $u*2 $u;
+    & > svg{
+        display: block;
+        margin: auto;
+    }
+}

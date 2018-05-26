@@ -6,11 +6,8 @@
     box-sizing: border-box;
 }
 
-body{
-    margin: 0;
-    background: #f4f4f4;
-    font-family: verdana,arial,sans-serif;
-    font-size: 14px;
+.emon_bolt path{
+    fill: $emon_green;
 }
 
 .smalltext{

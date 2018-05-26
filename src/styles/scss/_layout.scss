@@ -1,15 +1,26 @@
 
+html{
+    background: url('bg_noise.png') repeat;
+}
+body{
+    font-family: verdana,arial,sans-serif;
+    font-size: 14px;
+    margin: 0;
+    min-height: 100vh;
+}
+
 .pagesection{
     overflow: hidden;
-    margin: $u;
+    padding: $u;
 }
 .pagesection > *{
     margin: auto;
-    max-width: 700px;    
+    max-width: 500px;    
 }
 
 .component{
     background: #fff;
     border: 1px solid $grey_lt;
+    border-radius: 3px;
     padding: $u;
 }
