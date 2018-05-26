@@ -34,8 +34,14 @@ body {
 .component {
   background: #fff;
   border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 16px; }
+  border-radius: 3px; }
+  .component > * {
+    padding: 8px; }
+  .component .ui__header {
+    background: #eee;
+    font-size: 10px; }
+    .component .ui__header > * {
+      margin: 0; }
 
 /* Tabs */
 .tabs {
@@ -161,6 +167,12 @@ button {
   border-top: 1px solid #ccc; }
 
 /* Forms */
+form > *:first-child {
+  margin-top: 0; }
+
+form > *:last-child {
+  margin-bottom: 0; }
+
 label {
   line-height: 1.6; }
 

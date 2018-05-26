@@ -1,5 +1,12 @@
 /* Forms */
 
+form > *:first-child{
+    margin-top: 0;
+}
+form > *:last-child{
+    margin-bottom: 0;
+}
+
 label{
     @extend .smalltext;
     line-height: 1.6;
