@@ -1,0 +1,29 @@
+{% extends 'components/ui_container.html' %}
+
+{% block header %}
+    <h1>Network details</h1>
+{% endblock %}
+
+{% block body %}
+    <form id="form form__network">
+        <p>
+            <label>
+                Network name (SSID) <input type="text" value="{{ ssid }}">
+            </label>
+        </p>
+        <p>
+            <label>
+                Password <input type="password" value="{{ pwd }}">
+            </label>
+        </p>
+
+    </form>
+{% endblock %}
+
+{% block footer %}
+    <p>
+        <a class="btn" href="/networks">Cancel</a> 
+        {% if connected %}<button>Forget</button>{% else %}<button>Connect</button>{% endif %}
+    </p>
+{% endblock %}
+

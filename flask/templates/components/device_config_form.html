@@ -1,0 +1,23 @@
+{% extends 'components/ui_container.html' %}
+
+{% block header %}
+    <h1>Device configuration</h1>
+{% endblock %}
+
+{% block body %}
+    <form class="form form__device">
+        {% for section in config['settings'] %}
+        <fieldset>
+            <h2>{{ section }}</h2>
+            {% for setting in config['settings'][section] %}
+                <p>
+                    <label>
+                    {{ setting[0] }} <input type="text" value="{{ setting[1] }}">
+                    </label>
+                </p>
+            {% endfor %}
+        </fieldset>
+        {% endfor %}
+        <p><button>Cancel</button> <button>Save</button></p>
+    </form>
+{% endblock %}

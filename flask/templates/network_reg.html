@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block page %}
+    {% include 'components/network_form.html' %}
+{% endblock %}
+
+{% block footer %}
+    <script  type="text/javascript" src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}

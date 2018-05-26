@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block page %}
+    {% include 'components/device_config_form.html' %}
+    {% include 'components/firmware.html' %}
+{% endblock %}
+
+{% block footer %}
+    <script  type="text/javascript" src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}

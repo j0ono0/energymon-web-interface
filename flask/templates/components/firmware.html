@@ -1,0 +1,16 @@
+{% extends 'components/ui_container.html' %}
+
+{% block header %}
+    <h1>Update firmware</h1>
+{% endblock %}
+
+{% block body %}
+    <p>Installed firmware version: {{ config.firmware }}</p>
+    <p>Latest stable firmware version: [[insert current version here]]
+    <form class="form form__firmaware">
+        <p><button>Update firmware</button></p>
+    </form>
+{% endblock %}
+
+
+

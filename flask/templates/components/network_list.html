@@ -1,0 +1,31 @@
+{% extends 'components/ui_container.html' %}
+
+{% block header %}
+    <h1>Networks</h1>
+{% endblock %}
+
+{% block body %}
+    <div class="wifilist">
+        <ul class="navlist">
+            {% for network in network_list %}
+            <li>
+                <a href="/network/{{ network.id }}">
+                    {{ network.name }}
+                    {% if network.connected %}<span class="details"> Connected</span>
+                    {% elif network.pwd %}<span class="details"> Remembered</span>{% endif %}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        <ul class="navlist">
+            <li>
+                <a href="/network/">[+] Add network</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+{% block footer %}
+<a class="btn" href="/">Home</a>
+{% endblock %}
+
+
