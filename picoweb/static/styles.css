@@ -1,0 +1,209 @@
+/* Common measurement units (u_ prefix) */
+/* colour palette */
+/* Common and resets */
+* {
+  box-sizing: border-box; }
+
+.emon_bolt path {
+  fill: #CCFF00; }
+
+.smalltext, .navlist .details, label {
+  font-size: 11px;
+  color: #999; }
+
+h2, p {
+  margin: 16px 0; }
+
+html {
+  background: url("bg_noise.png") repeat; }
+
+body {
+  font-family: verdana,arial,sans-serif;
+  font-size: 14px;
+  margin: 0;
+  min-height: 100vh; }
+
+.pagesection {
+  overflow: hidden;
+  padding: 16px; }
+
+.pagesection > * {
+  margin: auto;
+  max-width: 500px; }
+
+.component {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px; }
+  .component > * {
+    padding: 8px; }
+  .component .ui__header {
+    background: #eee;
+    font-size: 10px; }
+    .component .ui__header > * {
+      margin: 0; }
+
+/* Tabs */
+.tabs {
+  background: #333;
+  color: #999;
+  overflow: hidden;
+  padding: 3px 6px 0 6px; }
+
+.tabs__tab {
+  color: #ccc;
+  display: block;
+  float: left;
+  font-weight: bold;
+  padding: 8px 20px;
+  text-decoration: none; }
+
+.tabs__tab > * {
+  margin: 0; }
+
+.tabs__tab.active {
+  background: #f4f4f4;
+  color: #333; }
+
+.tabs__content {
+  display: none; }
+
+.tabs__content.active {
+  display: block; }
+
+.banner {
+  background: #333;
+  color: #999;
+  overflow: hidden; }
+
+.banner__title {
+  font-weight: 400;
+  padding: 10px; }
+
+button {
+  background: none;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 16px; }
+  button:hover {
+    background: #f4f8ff;
+    cursor: pointer; }
+  button:disabled {
+    background: none;
+    color: #ccc; }
+
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  transition: opacity .3s ease; }
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle; }
+
+.modal-container {
+  width: 300px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif; }
+
+.modal-header h3 {
+  margin-top: 0;
+  color: #42b983; }
+
+.modal-body {
+  margin: 20px 0; }
+
+.modal-default-button {
+  float: right; }
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+.modal-enter {
+  opacity: 0; }
+
+.modal-leave-active {
+  opacity: 0; }
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1); }
+
+.navlist {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .navlist li + li {
+    border-top: 1px solid #e8e8e8; }
+  .navlist a {
+    color: #000;
+    display: block;
+    padding: 8px;
+    text-decoration: none; }
+  .navlist a:hover {
+    background: #f4f8ff; }
+  .navlist .details {
+    float: right; }
+
+.navlist + .navlist {
+  border-top: 1px solid #ccc; }
+
+/* Forms */
+form > *:first-child {
+  margin-top: 0; }
+
+form > *:last-child {
+  margin-bottom: 0; }
+
+label {
+  line-height: 1.6; }
+
+label > * {
+  color: #000;
+  display: block; }
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+  fieldset > *:first-child {
+    margin-top: 0; }
+
+fieldset + fieldset {
+  border-top: 1px solid #ccc;
+  padding-top: 16px; }
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+select {
+  border: 1px solid #ccc;
+  max-width: 100%;
+  padding: 4px;
+  width: 300px; }
+
+.masthead {
+  padding: 32px 16px; }
+  .masthead > svg {
+    display: block;
+    margin: auto; }
+
+/*# sourceMappingURL=styles.css.map */

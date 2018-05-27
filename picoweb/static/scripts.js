@@ -1,0 +1,1 @@
+console.log("scripts from 'static' are working");
