@@ -1,4 +1,4 @@
-{% args logging_services, active_logger %}
+{% args log_ts, log_aws, active_logger %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@
                 <div class="ui__header">
                     <h1>Logging service</h1>
                 </div>
-                <div class="ui__body">
+                <div class="ui__body ani_height" v-on:transitionend="ani_end">
                     <form class="form form__logging">
                         <fieldset>
                             <p>
@@ -18,9 +18,8 @@
                                     Logging service
                                     <select v-model="service">
                                         <option>-- No service selected --</option>
-                                        {% for service in logging_services %}
-                                        <option{% if service.name == active_logger %} selected{% endif %}>{{ service.name }}</option>
-                                        {% endfor %}
+                                        <option{% if log_ts.name == active_logger %} selected{% endif %}>{{ log_ts.name }}</option>
+                                        <option{% if log_aws.name == active_logger %} selected{% endif %}>{{ log_aws.name }}</option>
                                     </select>
                                 </label>
                             </p>
@@ -71,13 +70,18 @@
                 data: {
                     service :"{{ active_logger }}",
                     ts:{
-                        key  : ''              
+                        key  : "{{ log_ts.key }}"              
                     },
                     awsiot:{
-                        cert  : '',
-                        key  : '',
-                        subdomain: '',
-                        region: ''   
+                        cert  : "{{ log_aws.cert }}",
+                        key  : "{{ log_aws.key }}",
+                        subdomain: "{{ log_aws.subdomain }}",
+                        region: "{{ log_aws.region }}"   
+                    }
+                },
+                methods:{
+                    ani_end: function(){
+                        console.log("animation ended");
                     }
                 },
                  computed:{

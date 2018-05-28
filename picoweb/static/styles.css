@@ -205,9 +205,15 @@ select {
   width: 300px; }
 
 .masthead {
-  padding: 32px 16px; }
+  padding: 32px 16px;
+  text-align: center; }
+  .masthead a {
+    display: inline-block; }
   .masthead > svg {
     display: block;
     margin: auto; }
 
-/*# sourceMappingURL=styles.css.map */
+.ani_height {
+  overflow: hidden;
+  transition-duration: 500ms;
+  height: 500px; }

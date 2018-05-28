@@ -1,12 +1,14 @@
-
 ### Dummy data ###
-version = "0.0.0.3"
-latest = "0.0.1.1"
+# NB. uTemplates use dot notation for variable references
+# so data is often converted to objects here.
+
+####################################
+# Logging services
 
 class Log_ts:
-    def __init__(self, api=''):
+    def __init__(self, key=''):
         self.name = "ThingSpeak"
-        self.api = api
+        self.key = key
 class Log_awsiot:
     def __init__(self, cert='', key='', subdomain='', region=''):
         self.name = "AWS IoT"
@@ -15,8 +17,15 @@ class Log_awsiot:
         self.subdomain = subdomain
         self.region = region
 
-logging_services = [Log_ts(),Log_awsiot()]
+log_ts = Log_ts()
+log_aws = Log_awsiot('myCert.pem','myKey.key','myIoT','ap-southeast-2')
 active_logger = "AWS IoT"
+
+####################################
+# Device Configuration
+
+version = "0.0.0.3"
+latest = "0.0.1.1"
 
 class Eci:
     def __init__(self, name):
@@ -29,8 +38,9 @@ class Eci:
 
 config = [ Eci('ECI1'), Eci('ECI2')]
 
-   
-# Temporary networks class as templates use dot notation
+ 
+####################################
+# Networks
 class Network:
     def __init__(self, id, ssid, strength, pwd, connected):
         self.id = id

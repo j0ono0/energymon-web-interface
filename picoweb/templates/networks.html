@@ -5,10 +5,11 @@
     {% include 'head.tpl' %}
 	<body>
        {% include 'masthead.tpl' %}
-        <div class="pagesection">
+        <div id="vue_app" class="pagesection">
             <div class="component">
                 <div class="ui__header">
                     <h1>Networks</h1>
+                    <p>aync count from server: <template v-cloak>[[ serverMessage ]]</template></p>
                 </div>
                 <div class="ui__body">
                      <ul class="navlist">
@@ -22,9 +23,33 @@
                         </li>
                         {% endfor %}
                     </ul>
+                    <ul class="navlist">
+                        <li>
+                            <a href="/network/">[+] Add network</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
        {% include 'footer.tpl' %}
+       <script>
+                   
+            var app = new Vue({
+                el: '#vue_app',
+                delimiters: ["[[","]]"],
+                data:{
+                    serverMessage: '0'
+                },
+                created:function(){
+                    var source = new EventSource("event");
+                    source.onmessage = function(event) {
+                        this.serverMessage = event.data;
+                    }.bind(this)
+                    source.onerror = function(error) {
+                        console.log(error);
+                    }
+                }
+            })
+        </script>
 	</body>
 </html>

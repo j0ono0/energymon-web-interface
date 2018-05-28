@@ -1,4 +1,5 @@
 import picoweb
+import uasyncio
 import ure as re
 
 # Temporary data
@@ -16,19 +17,44 @@ def index(req, resp):
 def menu(req, resp):
     yield from picoweb.start_response(resp)
     yield from app.render_template(resp, "networks.html", (networks,))
+   
 
-@app.route(re.compile('^/network/([0-9]+)'))
+@app.route("/event")
+def push_data(req, resp):
+    print("Event source connected")
+    yield from resp.awrite("HTTP/1.0 200 OK\r\n")
+    yield from resp.awrite("Content-Type: text/event-stream\r\n")
+    yield from resp.awrite("\r\n")
+    i = 0
+    try:
+        while True:
+            yield from resp.awrite("data: %d\n\n" % i)
+            yield from uasyncio.sleep(1)
+            i += 1
+    except OSError:
+        print("Event source connection closed")
+        yield from resp.aclose()
+    
+
+@app.route(re.compile('^/network(?:/([0-9]*))?'))
 def network_details(req, resp):
-    nid = int(picoweb.utils.unquote_plus(req.url_match.group(1)))
-    for network in networks:
-        if network.id == nid:
-            yield from picoweb.start_response(resp)
-            yield from app.render_template(resp, "network_details.html", (network,))
+    if req.url_match.group(1):
+        # Retrieve existing network if it exists
+        nid = int(picoweb.utils.unquote_plus(req.url_match.group(1)))
+        for n in networks:
+            if n.id == nid:
+                network = n
+    else:
+        # Create new network object
+        network = temp_data.Network(-1,'','','','')
+    
+    yield from picoweb.start_response(resp)
+    yield from app.render_template(resp, "network_details.html", (network,))
 
 @app.route("/logging")
 def logging(req, resp):
     yield from picoweb.start_response(resp)
-    yield from app.render_template(resp, "logging.html",(temp_data.logging_services,temp_data.active_logger))
+    yield from app.render_template(resp, "logging.html",(temp_data.log_ts, temp_data.log_aws,temp_data.active_logger))
 
 @app.route("/device")
 def device(req, resp):

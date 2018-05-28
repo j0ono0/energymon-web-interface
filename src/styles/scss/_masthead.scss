@@ -1,5 +1,9 @@
 .masthead{
         padding: $u*2 $u;
+        text-align: center;
+    a{
+        display: inline-block;
+    }
     & > svg{
         display: block;
         margin: auto;
