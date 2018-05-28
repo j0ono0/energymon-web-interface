@@ -1,0 +1,63 @@
+{% args config, version, latest %}
+
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'head.tpl' %}
+	<body>
+       {% include 'masthead.tpl' %}
+        <div class="pagesection">
+            <div class="component">
+                <div class="ui__header">
+                    <h1>Device configuration</h1>
+                </div>
+                <div class="ui__body">
+                    <form class="form form__device">
+                        {% for circuit in config %}
+                        <fieldset>
+                            <h2>{{ circuit.name }}</h2>
+                                <p>
+                                    <label>
+                                    CRC1 <input type="text" value="{{ circuit.crc1 }}">
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                    CRC2 <input type="text" value="{{ circuit.crc2 }}">
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                    Gain <input type="text" value="{{ circuit.gain }}">
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                    U-Gain <input type="text" value="{{ circuit.ugain }}">
+                                    </label>
+                                </p>
+
+                        </fieldset>
+                        {% endfor %}
+                        <p><button>Cancel</button> <button>Save</button></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+         <div class="pagesection">
+            <div class="component">
+                <div class="ui__header">
+                    <h1>Device configuration</h1>
+                </div>
+                <div class="ui__body">
+                    <p>Installed firmware version: {{ version }}</p>
+                    <p>Latest stable firmware version: {{ latest }}
+                    <form class="form form__firmaware">
+                        <p><button>Update firmware</button></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+       {% include 'footer.tpl' %}
+	</body>
+</html>

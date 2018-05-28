@@ -1,0 +1,30 @@
+{% args networks %}
+
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'head.tpl' %}
+	<body>
+       {% include 'masthead.tpl' %}
+        <div class="pagesection">
+            <div class="component">
+                <div class="ui__header">
+                    <h1>Networks</h1>
+                </div>
+                <div class="ui__body">
+                     <ul class="navlist">
+                        {% for network in networks %}
+                        <li>
+                            <a href="/network/{{ network.id }}">
+                                {{ network.ssid }}
+                                {% if network.connected %}<span class="details"> Connected</span>
+                                {% elif network.pwd %}<span class="details"> Remembered</span>{% endif %}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+       {% include 'footer.tpl' %}
+	</body>
+</html>
