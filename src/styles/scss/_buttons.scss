@@ -1,9 +1,10 @@
-button{
+button, .button{
     background: none;
     border: 1px solid $grey_lt;
     font-size: 14px;
     font-weight: bold;
     padding: $u_sm $u;
+    text-decoration: none;
     &:hover{
         background: $blue_xlt;
         cursor: pointer;

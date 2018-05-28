@@ -14,8 +14,11 @@
 h2, p {
   margin: 16px 0; }
 
+[v-cloak] {
+  display: none; }
+
 html {
-  background: url("bg_noise.png") repeat; }
+  background: url("bg_noise.png") repeat #424242; }
 
 body {
   font-family: verdana,arial,sans-serif;
@@ -80,16 +83,17 @@ body {
   font-weight: 400;
   padding: 10px; }
 
-button {
+button, .button {
   background: none;
   border: 1px solid #ccc;
   font-size: 14px;
   font-weight: bold;
-  padding: 8px 16px; }
-  button:hover {
+  padding: 8px 16px;
+  text-decoration: none; }
+  button:hover, .button:hover {
     background: #f4f8ff;
     cursor: pointer; }
-  button:disabled {
+  button:disabled, .button:disabled {
     background: none;
     color: #ccc; }
 

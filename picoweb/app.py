@@ -28,7 +28,7 @@ def network_details(req, resp):
 @app.route("/logging")
 def logging(req, resp):
     yield from picoweb.start_response(resp)
-    yield from app.render_template(resp, "logging.html")
+    yield from app.render_template(resp, "logging.html",(temp_data.logging_services,temp_data.active_logger))
 
 @app.route("/device")
 def device(req, resp):

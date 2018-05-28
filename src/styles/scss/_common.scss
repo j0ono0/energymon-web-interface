@@ -18,3 +18,8 @@
 h2,p{
     margin: $u 0;
 }
+
+// Hide content formatted by Vuejs until it is ready to avoid FOUSC
+[v-cloak] {
+  display: none;
+}

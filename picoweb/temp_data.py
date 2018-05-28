@@ -3,6 +3,21 @@
 version = "0.0.0.3"
 latest = "0.0.1.1"
 
+class Log_ts:
+    def __init__(self, api=''):
+        self.name = "ThingSpeak"
+        self.api = api
+class Log_awsiot:
+    def __init__(self, cert='', key='', subdomain='', region=''):
+        self.name = "AWS IoT"
+        self.cert = cert
+        self.key = key
+        self.subdomain = subdomain
+        self.region = region
+
+logging_services = [Log_ts(),Log_awsiot()]
+active_logger = "AWS IoT"
+
 class Eci:
     def __init__(self, name):
         self.name = name

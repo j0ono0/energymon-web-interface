@@ -1,32 +1,40 @@
+{% args logging_services, active_logger %}
+
 <!DOCTYPE html>
 <html lang="en">
     {% include 'head.tpl' %}
 	<body>
        {% include 'masthead.tpl' %}
-        <div class="pagesection">
-            <div class="component">
+        <div id="vue_app" class="pagesection">
+            <div  v-cloak  class="component">
                 <div class="ui__header">
                     <h1>Logging service</h1>
                 </div>
                 <div class="ui__body">
-                    <form id="form form__logging">
-                        <p>
-                            <label>
-                                Logging service
-                                <select v-model="service">
-                                    <option>-- No service selected --</option>
-                                    <option>ThingSpeak</option>
-                                    <option>AWS IoT</option>
-                                </select>
-                            </label>
-                        </p>
-                        
-                        <p v-if="service=='ThingSpeak'">
-                            <label>
-                                API Key <input type="text" v-model="ts_APIkey">
-                            </label>
-                        </p>
-                        <template v-if="service=='AWS IoT'">
+                    <form class="form form__logging">
+                        <fieldset>
+                            <p>
+                                <label>
+                                    Logging service
+                                    <select v-model="service">
+                                        <option>-- No service selected --</option>
+                                        {% for service in logging_services %}
+                                        <option{% if service.name == active_logger %} selected{% endif %}>{{ service.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </label>
+                            </p>
+                        </fieldset>
+                        <fieldset v-if="service=='ThingSpeak'">
+                        <h3>ThingSpeak</h3>
+                            <p>
+                                <label>
+                                    API Key <input type="text" v-model="ts.key">
+                                </label>
+                            </p>
+                        </fieldset>
+                        <fieldset v-if="service=='AWS IoT'">
+                        <h3>Amazon web service, IoT</h3>
                             <p>
                                 <label>
                                     Certificate <input type="file">
@@ -39,23 +47,48 @@
                             </p>
                             <p>
                                 <label>
-                                    Endpoint subdomain <input type="text" v-model="aws_subdomain">
+                                    Endpoint subdomain <input type="text" v-model="awsiot.subdomain">
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    Endpoint region <input type="text" v-model="aws_region">
+                                    Endpoint region <input type="text" v-model="awsiot.region">
                                 </label>
                             </p>
-                        </template>
+                        </fieldset>
                         <p>
-                            <a class="btn" href="/">Cancel</a> 
+                            <a class="button" href="/">Cancel</a> 
                             <button>Save</button>
                         </p>
                     </form>
                 </div>
             </div>
         </div>
-       {% include 'footer.tpl' %}
+        {% include 'footer.tpl' %}
+        <script>
+            var app = new Vue({
+                el: '#vue_app',
+                data: {
+                    service :"{{ active_logger }}",
+                    ts:{
+                        key  : ''              
+                    },
+                    awsiot:{
+                        cert  : '',
+                        key  : '',
+                        subdomain: '',
+                        region: ''   
+                    }
+                },
+                 computed:{
+                    formValid: function(){
+                        if(this.service != "-- No service selected --"){
+                            return true;
+                        }
+                        return false;
+                    },
+                }
+            })
+        </script>
 	</body>
 </html>
