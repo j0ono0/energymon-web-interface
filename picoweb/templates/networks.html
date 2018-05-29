@@ -15,17 +15,27 @@
                      <ul class="navlist">
                         {% for network in networks %}
                         <li>
-                            <a href="/network/{{ network.id }}">
+                            <a 
+                                v-on:click.prevent="accordion({{ network.id }})"
+                                href="#"
+                            >
                                 {{ network.ssid }}
                                 {% if network.connected %}<span class="details"> Connected</span>
                                 {% elif network.pwd %}<span class="details"> Remembered</span>{% endif %}
                             </a>
+                            {% include 'network_details.tpl' %}
                         </li>
                         {% endfor %}
                     </ul>
                     <ul class="navlist">
                         <li>
-                            <a href="/network/">[+] Add network</a>
+                            <a
+                                v-on:click.prevent="accordion('new')"
+                                href="#"
+                            >
+                                [+] Add network
+                            </a>
+                            {% include 'network_new.tpl' %}
                         </li>
                     </ul>
                 </div>
@@ -39,6 +49,19 @@
                 delimiters: ["[[","]]"],
                 data:{
                     serverMessage: '0'
+                },
+                methods:{
+                    accordion: function(id){
+                        var acc = this.$refs['acc_'+id]
+
+                        if(acc.offsetHeight == 0){
+                            // Open accordion
+                            acc.style.height = acc.firstChild.offsetHeight + 'px';
+                        }else{
+                            // Close accordion
+                            acc.style.height = '0'
+                        }
+                    }
                 },
                 created:function(){
                     var source = new EventSource("event");

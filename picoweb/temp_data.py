@@ -41,6 +41,7 @@ config = [ Eci('ECI1'), Eci('ECI2')]
  
 ####################################
 # Networks
+
 class Network:
     def __init__(self, id, ssid, strength, pwd, connected):
         self.id = id

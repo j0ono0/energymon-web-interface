@@ -65,7 +65,7 @@
                         </fieldset>
                         <p>
                             <a class="button" href="/">Cancel</a> 
-                            <button v-bind:disabled="!formValid">Save</button>
+                            <button>Save</button>
                         </p>
                     </form>
                 </div>
@@ -100,14 +100,6 @@
                     if(this.formheight != 'auto'){
                         this.formheight = this.$refs.form.offsetHeight + "px"
                     }
-                },
-                 computed:{
-                    formValid: function(){
-                        if(this.service != "-- No service selected --"){
-                            return true;
-                        }
-                        return false;
-                    },
                 }
             })
         </script>
