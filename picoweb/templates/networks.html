@@ -7,10 +7,7 @@
        {% include 'masthead.tpl' %}
         <div id="vue_app" class="pagesection">
             <div class="component">
-                <div class="ui__header">
-                    <h1>Networks</h1>
-                    <p>aync count from server: <template v-cloak>[[ serverMessage ]]</template></p>
-                </div>
+               {% include 'component_header.tpl' 'Networks' %}
                 <div class="ui__body">
                      <ul class="navlist">
                         {% for network in networks %}

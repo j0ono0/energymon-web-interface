@@ -40,10 +40,13 @@ body {
   border-radius: 3px; }
   .component .ui__header {
     background: #eee;
-    padding: 4px 16px; }
-    .component .ui__header > * {
-      font-size: 12px;
-      margin: 0; }
+    display: flex;
+    justify-content: space-between; }
+    .component .ui__header .heading {
+      font-size: 14px;
+      margin: 0 8px;
+      line-height: 30px;
+      white-space: nowrap; }
 
 /* Tabs */
 .tabs {
@@ -95,6 +98,20 @@ button, .button {
   button:disabled, .button:disabled {
     background: none;
     color: #ccc; }
+
+.btn_close {
+  background: #a36c76;
+  display: block;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+  text-indent: 100%;
+  width: 30px; }
+  .btn_close svg {
+    fill: #fff;
+    position: absolute;
+    left: 0;
+    top: 0; }
 
 .modal-mask {
   position: fixed;

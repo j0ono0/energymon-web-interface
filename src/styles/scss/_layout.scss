@@ -25,11 +25,17 @@ body{
     
     .ui__header{
         background: #eee;
-        padding: $u_xs $u;
+        display: flex;
+        justify-content: space-between;
     
-        &>*{ 
-            font-size: 12px;
-            margin: 0;
+        .heading{ 
+            font-size: 14px;
+            margin: 0 $u_sm;
+            line-height: 30px;
+            white-space: nowrap;
+        }
+        .controls{
+            
         }
     }
     

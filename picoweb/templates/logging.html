@@ -7,9 +7,7 @@
        {% include 'masthead.tpl' %}
         <div id="vue_app" class="pagesection">
             <div  v-cloak  class="component">
-                <div class="ui__header">
-                    <h1>Logging service</h1>
-                </div>
+                {% include 'component_header.tpl' 'Logging service' %}
                 <div 
                     class="ui__body ani_height" 
                     :style="{ height: formheight }"

@@ -7,9 +7,7 @@
        {% include 'masthead.tpl' %}
         <div class="pagesection">
             <div class="component">
-                <div class="ui__header">
-                    <h1>Device configuration</h1>
-                </div>
+                {% include 'component_header.tpl' 'Device configuration' %}
                 <div class="ui__body">
                     <form class="form form__device">
                         {% for circuit in config %}
@@ -46,9 +44,7 @@
         
          <div class="pagesection">
             <div class="component">
-                <div class="ui__header">
-                    <h1>Device configuration</h1>
-                </div>
+                {% include 'component_header.tpl' 'Firmware' %}
                 <div class="ui__body">
                     <p>Installed firmware version: {{ version }}</p>
                     <p>Latest stable firmware version: {{ latest }}

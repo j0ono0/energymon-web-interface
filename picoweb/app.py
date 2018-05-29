@@ -19,6 +19,7 @@ def menu(req, resp):
     yield from app.render_template(resp, "networks.html", (networks,))
    
 
+# When network list changes push updates to page
 @app.route("/event")
 def push_data(req, resp):
     print("Event source connected")
@@ -34,7 +35,6 @@ def push_data(req, resp):
     except OSError:
         print("Event source connection closed")
         yield from resp.aclose()
-    
 
 @app.route(re.compile('^/network(?:/([0-9]*))?'))
 def network_details(req, resp):
@@ -44,9 +44,6 @@ def network_details(req, resp):
         for n in networks:
             if n.id == nid:
                 network = n
-    else:
-        # Create new network object
-        network = temp_data.Network(-1,'','','','')
     
     yield from picoweb.start_response(resp)
     yield from app.render_template(resp, "network_details.html", (network,))

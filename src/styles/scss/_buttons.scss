@@ -14,3 +14,19 @@ button, .button{
         color: $grey_lt;
     }
 }
+
+.btn_close{
+    background: #a36c76;
+    display: block;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    text-indent: 100%;
+    width:30px;
+    svg{
+        fill: #fff;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
