@@ -1,5 +1,9 @@
 /* Forms */
 
+form{
+    padding: $u;
+}
+
 form > *:first-child{
     margin-top: 0;
 }

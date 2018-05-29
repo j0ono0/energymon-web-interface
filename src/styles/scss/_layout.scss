@@ -22,16 +22,15 @@ body{
     background: #fff;
     border: 1px solid $grey_lt;
     border-radius: 3px;
-        &>*{ 
-            padding: $u_sm;
-        }
     
     .ui__header{
+        background: #eee;
+        padding: $u_xs $u;
+    
         &>*{ 
+            font-size: 12px;
             margin: 0;
         }
-        background: #eee;
-        font-size: 10px;
     }
     
 }

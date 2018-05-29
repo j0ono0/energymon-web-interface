@@ -10,13 +10,21 @@
                 <div class="ui__header">
                     <h1>Logging service</h1>
                 </div>
-                <div class="ui__body ani_height" v-on:transitionend="ani_end">
-                    <form class="form form__logging">
+                <div 
+                    class="ui__body ani_height" 
+                    :style="{ height: formheight }"
+                    v-on:transitionend="ani_end"
+                    
+                >
+                    <form ref="form" class="form form__logging">
                         <fieldset>
                             <p>
                                 <label>
                                     Logging service
-                                    <select v-model="service">
+                                    <select 
+                                        v-model="service"
+                                        v-on:change="ani_start"
+                                    >
                                         <option>-- No service selected --</option>
                                         <option{% if log_ts.name == active_logger %} selected{% endif %}>{{ log_ts.name }}</option>
                                         <option{% if log_aws.name == active_logger %} selected{% endif %}>{{ log_aws.name }}</option>
@@ -33,7 +41,7 @@
                             </p>
                         </fieldset>
                         <fieldset v-if="service=='AWS IoT'">
-                        <h3>Amazon web service, IoT</h3>
+                            <h3>Amazon web service, IoT</h3>
                             <p>
                                 <label>
                                     Certificate <input type="file">
@@ -57,7 +65,7 @@
                         </fieldset>
                         <p>
                             <a class="button" href="/">Cancel</a> 
-                            <button>Save</button>
+                            <button v-bind:disabled="!formValid">Save</button>
                         </p>
                     </form>
                 </div>
@@ -68,6 +76,7 @@
             var app = new Vue({
                 el: '#vue_app',
                 data: {
+                    formheight: "auto",
                     service :"{{ active_logger }}",
                     ts:{
                         key  : "{{ log_ts.key }}"              
@@ -80,8 +89,16 @@
                     }
                 },
                 methods:{
+                    ani_start: function(event){
+                        this.formheight = this.$refs.form.offsetHeight + "px";
+                    },
                     ani_end: function(){
-                        console.log("animation ended");
+                        this.formheight = "auto";
+                    }
+                },
+                updated:function(){
+                    if(this.formheight != 'auto'){
+                        this.formheight = this.$refs.form.offsetHeight + "px"
                     }
                 },
                  computed:{

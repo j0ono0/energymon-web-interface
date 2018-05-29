@@ -38,12 +38,11 @@ body {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 3px; }
-  .component > * {
-    padding: 8px; }
   .component .ui__header {
     background: #eee;
-    font-size: 10px; }
+    padding: 4px 16px; }
     .component .ui__header > * {
+      font-size: 12px;
       margin: 0; }
 
 /* Tabs */
@@ -171,6 +170,9 @@ button, .button {
   border-top: 1px solid #ccc; }
 
 /* Forms */
+form {
+  padding: 16px; }
+
 form > *:first-child {
   margin-top: 0; }
 
@@ -215,5 +217,4 @@ select {
 
 .ani_height {
   overflow: hidden;
-  transition-duration: 500ms;
-  height: 500px; }
+  transition-duration: 500ms; }
