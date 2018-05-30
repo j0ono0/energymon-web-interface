@@ -1,4 +1,4 @@
-{% args config, version, latest %}
+{% args config %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,19 +37,6 @@
                         </fieldset>
                         {% endfor %}
                         <p><a class="button" href="/">Cancel</a> <button>Save</button></p>
-                    </form>
-                </div>
-            </div>
-        </div>
-        
-         <div class="pagesection">
-            <div class="component">
-                {% include 'component_header.tpl' 'Firmware' %}
-                <div class="ui__body">
-                    <p>Installed firmware version: {{ version }}</p>
-                    <p>Latest stable firmware version: {{ latest }}
-                    <form class="form form__firmaware">
-                        <p><button>Update firmware</button></p>
                     </form>
                 </div>
             </div>

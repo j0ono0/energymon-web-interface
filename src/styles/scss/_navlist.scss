@@ -10,11 +10,18 @@
     li > a{
         color: #000;
         display: block;
-        padding: $u_sm;
+        padding: $u_sm $u;
         text-decoration: none;
+        transition: background-color 0.2s ease;
     }
-    li > a:hover{
+    li > a:hover,
+    li > a.active{
         background: $blue_xlt;
+        transition: background-color 0.4s ease;
+    }
+    li > a.active:hover{
+        background: $blue_lt;
+        transition: background-color 0.8s ease;
     }
     .details{
         @extend .smalltext;

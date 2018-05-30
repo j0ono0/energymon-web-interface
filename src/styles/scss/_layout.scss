@@ -34,9 +34,8 @@ body{
             line-height: 30px;
             white-space: nowrap;
         }
-        .controls{
-            
+        .controls > *:last-child{
+            border-top-right-radius: 2px
         }
     }
-    
 }

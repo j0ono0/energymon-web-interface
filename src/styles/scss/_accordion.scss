@@ -1,7 +1,8 @@
 
-// TODO: set accordion heights is auto if JavaScript fails to load
-
 .accordion{
     height: 0;
     overflow: hidden;
+}
+.accordion.active{
+    background: $blue_xlt;
 }

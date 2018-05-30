@@ -1,6 +1,8 @@
 button, .button{
     background: none;
     border: 1px solid $grey_lt;
+    color: #000;
+    display: inline-block;
     font-size: 14px;
     font-weight: bold;
     padding: $u_sm $u;
@@ -15,6 +17,20 @@ button, .button{
     }
 }
 
+.button--inv{
+    border:none;
+    padding: 0;
+}
+.button--inv + .button--inv{
+    padding-left: $u;
+}
+
+.active{
+    button, .button{
+        color: $blue_xdk;
+    }
+}
+
 .btn_close{
     background: #a36c76;
     display: block;
@@ -23,6 +39,13 @@ button, .button{
     position: relative;
     text-indent: 100%;
     width:30px;
+    transition: background-color 0.2s ease;
+    
+    &:hover{
+        background: #aa233b;    
+        transition: background-color 0.8s ease;
+    }
+    
     svg{
         fill: #fff;
         position: absolute;

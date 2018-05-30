@@ -13,7 +13,8 @@
                         {% for network in networks %}
                         <li>
                             <a 
-                                v-on:click.prevent="accordion({{ network.id }})"
+                                v-on:click.prevent="accordion($event, {{ network.id }})"
+                                :class="linkClasses({{ network.id }})"
                                 href="#"
                             >
                                 {{ network.ssid }}
@@ -27,7 +28,8 @@
                     <ul class="navlist">
                         <li>
                             <a
-                                v-on:click.prevent="accordion('new')"
+                                v-on:click.prevent="accordion($event, 'new')"
+                                :class="linkClasses('new')"
                                 href="#"
                             >
                                 [+] Add network
@@ -45,22 +47,44 @@
                 el: '#vue_app',
                 delimiters: ["[[","]]"],
                 data:{
-                    serverMessage: '0'
+                    serverMessage: '0',
+                    activeId: '-1'
                 },
                 methods:{
-                    accordion: function(id){
-                        var acc = this.$refs['acc_'+id]
-
-                        if(acc.offsetHeight == 0){
-                            // Open accordion
-                            acc.style.height = acc.firstChild.offsetHeight + 'px';
+                    accordion: function(event, id){
+                        if(this.activeId === id){
+                            this.activeId = undefined;
                         }else{
-                            // Close accordion
-                            acc.style.height = '0'
+                            this.activeId = id;
                         }
+                    },
+                    linkClasses(id){
+                        if(this.activeId == id){
+                            return 'active';
+                        }
+                        return '';
+                    },
+                    accStyles:function(id){
+                        // Note: need to ensure accordion is not 'undefined'
+                        var accordion = this.$refs['acc_'+id];
+                        if(this.activeId != id){
+                            return {height:'0px'}
+                        }else if(accordion && accordion.offsetHeight == 0){
+                            return {height: accordion.firstChild.offsetHeight + 'px'}
+                        }else{
+                            return {height:'0px'}
+                        }
+                    },
+                    accClasses:function(id){
+                        var classes = ['accordion','ani_height'];
+                        if(this.activeId == id){
+                            classes.push('active');
+                        }
+                        return classes.join(' ');
                     }
                 },
                 created:function(){
+                    // Demo: recieving pushed data
                     var source = new EventSource("event");
                     source.onmessage = function(event) {
                         this.serverMessage = event.data;

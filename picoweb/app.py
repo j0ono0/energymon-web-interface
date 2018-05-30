@@ -53,11 +53,15 @@ def logging(req, resp):
     yield from picoweb.start_response(resp)
     yield from app.render_template(resp, "logging.html",(temp_data.log_ts, temp_data.log_aws,temp_data.active_logger))
 
-@app.route("/device")
+@app.route("/hardware")
 def device(req, resp):
     yield from picoweb.start_response(resp)
-    yield from app.render_template(resp, "device.html",(temp_data.config, temp_data.version, temp_data.latest))
+    yield from app.render_template(resp, "hardware.html",(temp_data.config,))
 
+@app.route("/firmware")
+def device(req, resp):
+    yield from picoweb.start_response(resp)
+    yield from app.render_template(resp, "firmware.html",(temp_data.version, temp_data.latest))
 import logging
 logging.basicConfig(level=logging.INFO)
 

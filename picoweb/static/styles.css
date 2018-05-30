@@ -47,6 +47,8 @@ body {
       margin: 0 8px;
       line-height: 30px;
       white-space: nowrap; }
+    .component .ui__header .controls > *:last-child {
+      border-top-right-radius: 2px; }
 
 /* Tabs */
 .tabs {
@@ -88,6 +90,8 @@ body {
 button, .button {
   background: none;
   border: 1px solid #ccc;
+  color: #000;
+  display: inline-block;
   font-size: 14px;
   font-weight: bold;
   padding: 8px 16px;
@@ -99,6 +103,16 @@ button, .button {
     background: none;
     color: #ccc; }
 
+.button--inv {
+  border: none;
+  padding: 0; }
+
+.button--inv + .button--inv {
+  padding-left: 16px; }
+
+.active button, .active .button {
+  color: #1958c6; }
+
 .btn_close {
   background: #a36c76;
   display: block;
@@ -106,7 +120,11 @@ button, .button {
   overflow: hidden;
   position: relative;
   text-indent: 100%;
-  width: 30px; }
+  width: 30px;
+  transition: background-color 0.2s ease; }
+  .btn_close:hover {
+    background: #aa233b;
+    transition: background-color 0.8s ease; }
   .btn_close svg {
     fill: #fff;
     position: absolute;
@@ -176,10 +194,16 @@ button, .button {
   .navlist li > a {
     color: #000;
     display: block;
-    padding: 8px;
-    text-decoration: none; }
-  .navlist li > a:hover {
-    background: #f4f8ff; }
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.2s ease; }
+  .navlist li > a:hover,
+  .navlist li > a.active {
+    background: #f4f8ff;
+    transition: background-color 0.4s ease; }
+  .navlist li > a.active:hover {
+    background: #DCEAFF;
+    transition: background-color 0.8s ease; }
   .navlist .details {
     float: right; }
 
@@ -239,3 +263,6 @@ select {
 .accordion {
   height: 0;
   overflow: hidden; }
+
+.accordion.active {
+  background: #f4f8ff; }
