@@ -1,7 +1,7 @@
 /* Forms */
 
 form{
-    padding: $u;
+    margin: $u;
 }
 
 form > *:first-child{
@@ -41,7 +41,7 @@ input[type="number"],
 input[type="password"],
 select{
     border: 1px solid $grey_lt;
-    max-width: 100%;
+    max-width: 300px;
     padding: $u_xs;
-    width: 300px;
+    width: 100%;
 }

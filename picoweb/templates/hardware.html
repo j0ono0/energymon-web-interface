@@ -9,31 +9,35 @@
             <div class="component">
                 {% include 'component_header.tpl' 'Device configuration' %}
                 <div class="ui__body">
+                    <div class="content">
+                        <p>Some explaination needed? ...</p>
+                    </div>
                     <form class="form form__device">
                         {% for circuit in config %}
                         <fieldset>
-                            <h2>{{ circuit.name }}</h2>
-                                <p>
-                                    <label>
-                                    CRC1 <input type="text" value="{{ circuit.crc1 }}">
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                    CRC2 <input type="text" value="{{ circuit.crc2 }}">
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                    Gain <input type="text" value="{{ circuit.gain }}">
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                    U-Gain <input type="text" value="{{ circuit.ugain }}">
-                                    </label>
-                                </p>
-
+                                <h2>{{ circuit.name }}</h2>
+                                <div class="grid-4">
+                                    <p>
+                                        <label>
+                                        CRC1 <input type="text" value="{{ circuit.crc1 }}">
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                        CRC2 <input type="text" value="{{ circuit.crc2 }}">
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                        Gain <input type="text" value="{{ circuit.gain }}">
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                        U-Gain <input type="text" value="{{ circuit.ugain }}">
+                                        </label>
+                                    </p>
+                                </div>
                         </fieldset>
                         {% endfor %}
                         <p><a class="button" href="/">Cancel</a> <button>Save</button></p>

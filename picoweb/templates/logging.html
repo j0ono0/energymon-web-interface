@@ -6,7 +6,7 @@
 	<body>
        {% include 'masthead.tpl' %}
         <div id="vue_app" class="pagesection">
-            <div  v-cloak  class="component">
+            <div  class="component">
                 {% include 'component_header.tpl' 'Logging service' %}
                 <div 
                     class="ui__body ani_height" 
@@ -30,7 +30,7 @@
                                 </label>
                             </p>
                         </fieldset>
-                        <fieldset v-if="service=='ThingSpeak'">
+                        <fieldset v-cloak v-if="service=='ThingSpeak'">
                         <h3>ThingSpeak</h3>
                             <p>
                                 <label>
@@ -38,7 +38,7 @@
                                 </label>
                             </p>
                         </fieldset>
-                        <fieldset v-if="service=='AWS IoT'">
+                        <fieldset v-cloak v-if="service=='AWS IoT'">
                             <h3>Amazon web service, IoT</h3>
                             <p>
                                 <label>
@@ -87,8 +87,11 @@
                     }
                 },
                 methods:{
-                    ani_start: function(event){
-                        this.formheight = this.$refs.form.offsetHeight + "px";
+                    ani_start: function(){
+                        var style = this.$refs.form.currentStyle || window.getComputedStyle(this.$refs.form);
+                        var margintop = parseInt(style.marginTop.slice(0,-2));
+                        var marginbottom = parseInt(style.marginBottom.slice(0,-2));
+                        this.formheight = this.$refs.form.offsetHeight + margintop + marginbottom + "px";
                     },
                     ani_end: function(){
                         this.formheight = "auto";
@@ -96,9 +99,10 @@
                 },
                 updated:function(){
                     if(this.formheight != 'auto'){
-                        this.formheight = this.$refs.form.offsetHeight + "px"
+                        this.ani_start();
                     }
                 }
+                
             })
         </script>
 	</body>

@@ -41,7 +41,8 @@ body {
   .component .ui__header {
     background: #eee;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    overflow: hidden; }
     .component .ui__header .heading {
       font-size: 14px;
       margin: 0 8px;
@@ -49,6 +50,17 @@ body {
       white-space: nowrap; }
     .component .ui__header .controls > *:last-child {
       border-top-right-radius: 2px; }
+
+.content {
+  margin: 16px; }
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 8px;
+  margin: 16px 0; }
+  .grid-4 > * {
+    margin: 0; }
 
 /* Tabs */
 .tabs {
@@ -212,7 +224,7 @@ button, .button {
 
 /* Forms */
 form {
-  padding: 16px; }
+  margin: 16px; }
 
 form > *:first-child {
   margin-top: 0; }
@@ -243,9 +255,9 @@ input[type="number"],
 input[type="password"],
 select {
   border: 1px solid #ccc;
-  max-width: 100%;
+  max-width: 300px;
   padding: 4px;
-  width: 300px; }
+  width: 100%; }
 
 .masthead {
   padding: 32px 16px;
@@ -266,3 +278,15 @@ select {
 
 .accordion.active {
   background: #f4f8ff; }
+
+table {
+  border-collapse: collapse;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  width: 100%; }
+
+tr + tr {
+  border-top: 1px dotted #e8e8e8; }
+
+td {
+  padding: 8px; }
