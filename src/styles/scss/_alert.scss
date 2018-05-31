@@ -1,0 +1,24 @@
+.alert{
+    &>div{
+        border: 1px solid;
+        border-radius: 3px;
+        margin: auto;
+        max-width: 500px;
+        padding: 0 $u;
+    }
+}
+.alert.info>div{ 
+    background: #fff; 
+    border-color: $grey_lt 
+}
+    
+.alert.success>div{ 
+    background: #89984fcc;
+    border-color: $emon_green;
+    color: #fff;
+}
+.alert.failure>div{ 
+    background: $failure_bg;
+    border-color: $failure;
+    color: #fff;
+}

@@ -70,7 +70,12 @@
                         if(this.activeId != id){
                             return {height:'0px'}
                         }else if(accordion && accordion.offsetHeight == 0){
-                            return {height: accordion.firstChild.offsetHeight + 'px'}
+                        
+                            var style = accordion.firstChild.currentStyle || window.getComputedStyle(accordion.firstChild);
+                            var margintop = parseInt(style.marginTop.slice(0,-2));
+                            var marginbottom = parseInt(style.marginBottom.slice(0,-2));
+                        
+                            return {height: accordion.firstChild.offsetHeight+ margintop + marginbottom + 'px'}
                         }else{
                             return {height:'0px'}
                         }

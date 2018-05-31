@@ -290,3 +290,24 @@ tr + tr {
 
 td {
   padding: 8px; }
+
+.alert > div {
+  border: 1px solid;
+  border-radius: 3px;
+  margin: auto;
+  max-width: 500px;
+  padding: 0 16px; }
+
+.alert.info > div {
+  background: #fff;
+  border-color: #ccc; }
+
+.alert.success > div {
+  background: #89984fcc;
+  border-color: #CCFF00;
+  color: #fff; }
+
+.alert.failure > div {
+  background: #5f2d36;
+  border-color: #aa233b;
+  color: #fff; }

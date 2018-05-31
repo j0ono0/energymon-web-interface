@@ -104,4 +104,11 @@ def networks():
         networks.sort(key=lambda n:(str(n.connected), n.pwd, n.ssid), reverse=True)
         
     return networks
-    
+
+
+####################################
+# Alerts
+class Alert:
+    def __init__(self,type='info',message=''):
+        self.type = type
+        self.message = message

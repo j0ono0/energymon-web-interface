@@ -3,18 +3,22 @@
     :style="accStyles({{ network.id }})"
     :class="accClasses({{ network.id }})"
 >
-    <form v-cloak id="form form__network">
-        <p><label>Password <input name="pwd" type="password" value="{{ network.pwd }}"></label></p>
+    <form 
+        v-cloak 
+        class="form form__network"
+        method="post"
+    >
+        <p><label>Password <input name="pwd" id="pwd" type="password" value="{{ network.pwd }}"></label></p>
         <p>
         
-        <input name="ssid" type="hidden" value="{{ network.ssid }}">
+        <input name="ssid" id="ssid" type="hidden" value="{{ network.ssid }}">
         
         {% if network.pwd or network.connected %}
-            <a class="button  button--inv" href="/networks">Forget</a> 
+            <button name="forget" type="submit" class="button button--inv">Forget</button> 
         {% endif %}
         
         {% if not network.connected %}
-            <button class="button--inv">Connect</button>
+            <button name="connect" type="submit" class="button--inv">Connect</button>
         {% endif %}
         </p>
     </form>
