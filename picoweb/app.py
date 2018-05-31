@@ -11,7 +11,7 @@ app = picoweb.WebApp(__name__)
 @app.route("/")
 def index(req, resp):
     yield from picoweb.start_response(resp)
-    yield from app.render_template(resp, "index.html")
+    yield from app.render_template(resp, "index.html", (network_list[0], temp_data.active_logger, temp_data.version))
 
 @app.route("/networks", methods=['GET', 'POST'])
 def networks(req, resp):

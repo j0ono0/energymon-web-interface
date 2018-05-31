@@ -28,7 +28,31 @@
         float: right;
     }
 }
-
 .navlist + .navlist{
     border-top: 1px solid $grey_lt;
+}
+
+.mainmenu{
+    list-style: none;
+    max-width: $max_content_width *0.66;
+    margin: auto;
+    padding:0;
+    
+    .details{
+        display: block;
+        font-size: 11px;
+        color: $grey;
+    }
+    
+    li + li > a{
+        border-top: 1px solid $grey_dk;
+    }
+    li > a{
+        color: $grey_xlt;
+        display: block;
+        padding: $u;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+    }
+    
 }

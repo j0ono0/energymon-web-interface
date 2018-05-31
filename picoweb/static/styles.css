@@ -222,6 +222,24 @@ button, .button {
 .navlist + .navlist {
   border-top: 1px solid #ccc; }
 
+.mainmenu {
+  list-style: none;
+  max-width: 330px;
+  margin: auto;
+  padding: 0; }
+  .mainmenu .details {
+    display: block;
+    font-size: 11px;
+    color: #999; }
+  .mainmenu li + li > a {
+    border-top: 1px solid #575757; }
+  .mainmenu li > a {
+    color: #e8e8e8;
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    transition: background-color 0.2s ease; }
+
 /* Forms */
 form {
   margin: 16px; }
