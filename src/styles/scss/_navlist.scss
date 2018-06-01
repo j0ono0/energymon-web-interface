@@ -37,15 +37,23 @@
     max-width: $max_content_width *0.66;
     margin: auto;
     padding:0;
+    display: grid; 
+    grid-auto-rows: 1fr;
     
     .details{
         display: block;
         font-size: 11px;
         color: $grey;
     }
-    
-    li + li > a{
-        border-top: 1px solid $grey_dk;
+    li{
+        @include transition_all($ani_med);
+        display: flex;
+        align-items: center;
+        border-top: 1px solid rgba(61,61,61,0);
+        border-bottom: 1px solid rgba(61,61,61,0);
+    }
+    li + li{
+        border-top-color: $grey_dk;
     }
     li > a{
         color: $grey_xlt;
@@ -53,6 +61,13 @@
         padding: $u;
         text-decoration: none;
         transition: background-color 0.2s ease;
+        width: 100%;
+    }
+    li:hover{
+        @include transition_all(ani_fast);
+        border-top-color: $emon_green;
+        border-bottom-color: $emon_green;
+        z-index:10;
     }
     
 }

@@ -5,6 +5,8 @@
 // Variables
 @import "variables";
 
+// Common (dependencies)
+@import "animation";
 // Partials
 @import "common";
 @import "layout";
@@ -15,7 +17,6 @@
 @import "navlist";
 @import "forms";
 @import "masthead";
-@import "animation";
 @import "accordion";
 @import "tables";
 @import "alert";

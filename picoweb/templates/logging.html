@@ -30,34 +30,34 @@
                                 </label>
                             </p>
                         </fieldset>
-                        <fieldset v-cloak v-if="service=='ThingSpeak'">
+                        <fieldset {% if active_logger != 'ThingSpeak' %} v-cloak {% endif %} v-if="service=='ThingSpeak'">
                         <h3>ThingSpeak</h3>
                             <p>
                                 <label>
-                                    API Key <input type="text" v-model="ts.key">
+                                    API Key <input type="text" value="{{ log_ts.key }}">
                                 </label>
                             </p>
                         </fieldset>
-                        <fieldset v-cloak v-if="service=='AWS IoT'">
+                        <fieldset  {% if active_logger != 'AWS IoT' %} v-cloak {% endif %} v-if="service=='AWS IoT'">
                             <h3>Amazon web service, IoT</h3>
                             <p>
                                 <label>
-                                    Certificate <input type="file">
+                                    Certificate <input type="file" value="{{ log_aws.cert }}">
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    Private key <input type="file">
+                                    Private key <input type="file" value="{{ log_aws.key }}">
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    Endpoint subdomain <input type="text" v-model="awsiot.subdomain">
+                                    Endpoint subdomain <input type="text" value="{{ log_aws.subdomain }}">
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    Endpoint region <input type="text" v-model="awsiot.region">
+                                    Endpoint region <input type="text" value="{{ log_aws.region }}">
                                 </label>
                             </p>
                         </fieldset>
@@ -76,15 +76,6 @@
                 data: {
                     formheight: "auto",
                     service :"{{ active_logger }}",
-                    ts:{
-                        key  : "{{ log_ts.key }}"              
-                    },
-                    awsiot:{
-                        cert  : "{{ log_aws.cert }}",
-                        key  : "{{ log_aws.key }}",
-                        subdomain: "{{ log_aws.subdomain }}",
-                        region: "{{ log_aws.region }}"   
-                    }
                 },
                 methods:{
                     ani_start: function(){

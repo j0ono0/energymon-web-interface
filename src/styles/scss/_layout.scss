@@ -1,6 +1,7 @@
 
 html{
     background: url('bg_noise.png') repeat $grey_xdk;
+    @include fadein($ani_med)
 }
 body{
     font-family: verdana,arial,sans-serif;

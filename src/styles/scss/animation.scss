@@ -2,3 +2,29 @@
     overflow: hidden;
     transition-duration: 500ms;
 } 
+
+@mixin fadein($timing){
+    -webkit-animation: fadein_opacity $timing; /* Safari and Chrome */
+    -moz-animation: fadein_opacity $timing; /* Firefox */
+    -ms-animation: fadein_opacity $timing; /* Internet Explorer */
+    -o-animation: fadein_opacity $timing; /* Opera */
+    animation: fadein_opacity $timing;
+}
+@mixin transition_all($timing){
+    -moz-transition: all $timing ease-in;
+    -o-transition: all $timing ease-in;
+    -webkit-transition: all $timing ease-in;
+    transition: all $timing ease-in;
+}
+
+
+@keyframes fadein_opacity {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox */
+@-moz-keyframes fadein_opacity {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

@@ -1,5 +1,21 @@
 /* Common measurement units (u_ prefix) */
 /* colour palette */
+/* Animation speeds */
+.ani_height {
+  overflow: hidden;
+  transition-duration: 500ms; }
+
+@keyframes fadein_opacity {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+/* Firefox */
+@-moz-keyframes fadein_opacity {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 /* Common and resets */
 * {
   box-sizing: border-box; }
@@ -18,7 +34,16 @@ h2, p {
   display: none; }
 
 html {
-  background: url("bg_noise.png") repeat #424242; }
+  background: url("bg_noise.png") repeat #424242;
+  -webkit-animation: fadein_opacity 0.4s;
+  /* Safari and Chrome */
+  -moz-animation: fadein_opacity 0.4s;
+  /* Firefox */
+  -ms-animation: fadein_opacity 0.4s;
+  /* Internet Explorer */
+  -o-animation: fadein_opacity 0.4s;
+  /* Opera */
+  animation: fadein_opacity 0.4s; }
 
 body {
   font-family: verdana,arial,sans-serif;
@@ -226,19 +251,39 @@ button, .button {
   list-style: none;
   max-width: 330px;
   margin: auto;
-  padding: 0; }
+  padding: 0;
+  display: grid;
+  grid-auto-rows: 1fr; }
   .mainmenu .details {
     display: block;
     font-size: 11px;
     color: #999; }
-  .mainmenu li + li > a {
-    border-top: 1px solid #575757; }
+  .mainmenu li {
+    -moz-transition: all 0.4s ease-in;
+    -o-transition: all 0.4s ease-in;
+    -webkit-transition: all 0.4s ease-in;
+    transition: all 0.4s ease-in;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(61, 61, 61, 0);
+    border-bottom: 1px solid rgba(61, 61, 61, 0); }
+  .mainmenu li + li {
+    border-top-color: #575757; }
   .mainmenu li > a {
     color: #e8e8e8;
     display: block;
     padding: 16px;
     text-decoration: none;
-    transition: background-color 0.2s ease; }
+    transition: background-color 0.2s ease;
+    width: 100%; }
+  .mainmenu li:hover {
+    -moz-transition: all ani_fast ease-in;
+    -o-transition: all ani_fast ease-in;
+    -webkit-transition: all ani_fast ease-in;
+    transition: all ani_fast ease-in;
+    border-top-color: #CCFF00;
+    border-bottom-color: #CCFF00;
+    z-index: 10; }
 
 /* Forms */
 form {
@@ -285,10 +330,6 @@ select {
   .masthead > svg {
     display: block;
     margin: auto; }
-
-.ani_height {
-  overflow: hidden;
-  transition-duration: 500ms; }
 
 .accordion {
   height: 0;
