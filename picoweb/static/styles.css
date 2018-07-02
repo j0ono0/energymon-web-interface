@@ -75,6 +75,10 @@ body {
       white-space: nowrap; }
     .component .ui__header .controls > *:last-child {
       border-top-right-radius: 2px; }
+  .component .ui__footer {
+    background: #eee;
+    padding: 4px;
+    text-align: center; }
 
 .content {
   margin: 16px; }

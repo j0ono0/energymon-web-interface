@@ -40,6 +40,11 @@ body{
             border-top-right-radius: 2px
         }
     }
+    .ui__footer{
+        background: #eee;
+        padding: $u_xs;
+        text-align: center;
+    }
 }
 
 .content{

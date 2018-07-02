@@ -267,6 +267,9 @@ def render(networks):
                         </li>
                     </ul>
                 </div>
+                <div class=\"ui__footer\">
+                    <a class=\"button button--inv\" href=\"/networks\">Reload to search again</a>
+                </div>
             </div>
         </div>
        """
@@ -337,72 +340,7 @@ def render(networks):
                         }
                         return classes.join(' ');
                     },
-                    sortNetworks:function()"""
-    yield """{
-                        this.networks.sort(function(a,b)"""
-    yield """{
-                            // Connected
-                            if(a.connected===true)"""
-    yield """{
-                                return -1;
-                            }else if (b.connected===true)"""
-    yield """{
-                                return 1;
-                            }
-                            // Only one has password
-                            if(a.pwd && !b.pwd)"""
-    yield """{
-                                return -1;
-                            }else if(!a.pwd && !b.pwd)"""
-    yield """{
-                                return 1;
-                            }
-                            // Finally by strength
-                            if(a.strength > b.strength)"""
-    yield """{
-                                return -1;
-                            }else if (a.strength < b.strength)"""
-    yield """{
-                                return 1;
-                            }
-                            return 0;
-                        });
-                    
-                    },
-                    fetchData: function(url,callback)"""
-    yield """{
-                        console.log('fetching data');
-                        var httpRequest = new XMLHttpRequest();
-                        httpRequest.onreadystatechange = function()"""
-    yield """{
-                            if (httpRequest.readyState === XMLHttpRequest.DONE) """
-    yield """{
-                                if (httpRequest.status === 200) """
-    yield """{
-                                    console.log(response);
-                                    var response = JSON.parse(httpRequest.responseText);
-                                    callback(response);
-                                } else """
-    yield """{
-                                    //TO-DO: add alert UI for end user
-                                    console.log('failed to get json feed.');
-                                }
-                            }
-                        }.bind(this);
-                        httpRequest.open('GET', url);
-                        httpRequest.send();
-                    },
-                    updateNetworks: function(response)"""
-    yield """{
-                        this.networks = response.data;
-                        this.sortNetworks();
-                    },
-                },
-                created:function()"""
-    yield """{
-                    this.fetchData('/networks.json',this.updateNetworks);
                 }
-
             })
         </script>
 	</body>
