@@ -1,10 +1,12 @@
 import picoweb
 import uasyncio
 import ure as re
+import ujson
+
 
 # Temporary data
 import temp_data
-network_list = temp_data.networks()
+network_list = temp_data.networks(temp_data.wifi_1)
 
 app = picoweb.WebApp(__name__)
 
@@ -37,22 +39,13 @@ def networks(req, resp):
    
 
 # When network list changes push updates to page
-@app.route("/event")
+@app.route("/networks.json")
 def push_data(req, resp):
-    print("Event source connected")
-    yield from resp.awrite("HTTP/1.0 200 OK\r\n")
-    yield from resp.awrite("Content-Type: text/event-stream\r\n")
-    yield from resp.awrite("\r\n")
-    i = 0
-    try:
-        while True:
-            yield from resp.awrite("data: %d\n\n" % i)
-            yield from uasyncio.sleep(1)
-            i += 1
-    except OSError:
-        print("Event source connection closed")
-        yield from resp.aclose()
-
+    jsonData = temp_data.wifi_2
+    encoded = ujson.dumps(jsonData)
+    yield from picoweb.start_response(resp, content_type = "application/json")
+    yield from resp.awrite(encoded)
+    
 @app.route("/logging")
 def logging(req, resp):
     yield from picoweb.start_response(resp)

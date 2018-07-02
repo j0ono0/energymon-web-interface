@@ -2,6 +2,8 @@
 # NB. uTemplates use dot notation for variable references
 # so data is often converted to objects here.
 
+import ujson
+
 ####################################
 # Logging services
 
@@ -49,9 +51,26 @@ class Network:
         self.ssid = ssid
         self.pwd = pwd
         self.connected = connected
+        
+    def __iter__(self):
+        yield 'id', self.id
+        yield 'str', self.strength
+        yield 'ssid', self.ssid
+        yield 'pwd', self.pwd
+        yield 'connected', self.connected
 
-def networks():
-    data = [
+def networks(network_list):
+    data = network_list
+    networks = []
+    # Convert dict to list of objects
+    for n in data:
+        
+        networks.append(Network(n['id'],n['ssid'],n['strength'],n['pwd'],n['connected'],))
+    # Sort
+    networks.sort(key=lambda n:(str(n.connected), n.pwd, n.ssid), reverse=True)
+    return networks
+
+wifi_1 = [
         {
             "id":0,
             "ssid":"Fon WiFi",
@@ -95,16 +114,42 @@ def networks():
             "pwd":"sshhhhhhh!",
             "connected": False
         }
-    ]
-    networks = []
-    # Convert dict to list of objects
-    for n in data:
-        networks.append(Network(n['id'],n['ssid'],n['strength'],n['pwd'],n['connected'],))
-        # Sort
-        networks.sort(key=lambda n:(str(n.connected), n.pwd, n.ssid), reverse=True)
-        
-    return networks
+    ] 
 
+# test json object
+wifi_2 = [
+        {
+            "id":0,
+            "ssid":"Fon WiFi",
+            "strength":-84,
+            "pwd":'',
+            "connected": False
+        },{
+            "id":1,
+            "ssid":"Telstra5C49",
+            "strength":-90,
+            "pwd":'whaawhaa',
+            "connected": False
+        },{
+            "id":2,
+            "ssid":"TGP fastAir",
+            "strength":-40,
+            "pwd":"nevaguess;P",
+            "connected": True
+        },{
+            "id":6,
+            "ssid":"weak network",
+            "strength":10,
+            "pwd":"qwerty",
+            "connected": False
+        },{
+            "id":6,
+            "ssid":"strong network",
+            "strength":50,
+            "pwd":"asdf",
+            "connected": False
+        }
+    ] 
 
 ####################################
 # Alerts
