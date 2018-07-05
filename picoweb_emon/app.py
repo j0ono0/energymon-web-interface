@@ -10,7 +10,7 @@ data.make_networkdb()
 data.make_loggerdb()
 data.make_configdb()
 
-app = picoweb.WebApp(__name__)
+app = picoweb.WebApp(None)
 
 class Alert:
     def __init__(self,type='info',message=''):
@@ -190,3 +190,4 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 app.run(debug=True)
+#app.run(debug=True, host = "192.168.178.43")
