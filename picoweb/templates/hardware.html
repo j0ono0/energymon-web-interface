@@ -18,32 +18,32 @@
                     <form method="post" class="form form__device">
                         {% for circuit in config %}
                         <fieldset>
-                                <h2>{{ circuit.name }}</h2>
+                                <h2>{{ circuit['Name'] }}</h2>
                                 <div class="grid-4">
                                     <p>
                                         <label>
-                                        CRC1 <input name="{{circuit.name}}_crc1" type="text" value="{{ circuit.crc1 }}">
+                                        CRC1 <input name="{{circuit['Name']}}_CRC1" type="text" value="{{ circuit['CRC1'] }}">
                                         </label>
                                     </p>
                                     <p>
                                         <label>
-                                        CRC2 <input name="{{circuit.name}}_crc2" type="text" value="{{ circuit.crc2 }}">
+                                        CRC2 <input name="{{circuit['Name']}}_CRC2" type="text" value="{{ circuit['CRC2'] }}">
                                         </label>
                                     </p>
                                     <p>
                                         <label>
-                                        Gain <input name="{{circuit.name}}_gain" type="text" value="{{ circuit.gain }}">
+                                        Gain <input name="{{circuit['Name']}}_Gain" type="text" value="{{ circuit['Gain'] }}">
                                         </label>
                                     </p>
                                     <p>
                                         <label>
-                                        U-Gain <input name="{{circuit.name}}_ugain" type="text" value="{{ circuit.ugain }}">
+                                        U-Gain <input name="{{circuit['Name']}}_Ugain" type="text" value="{{ circuit['Ugain'] }}">
                                         </label>
                                     </p>
                                 </div>
                         </fieldset>
                         {% endfor %}
-                        <p><a class="button" href="/">Cancel</a> <button type="submit" name="save">Save</button></p>
+                        <p><a class="button" href="/">Cancel</a> <button type="submit" name="submit">Save</button></p>
                     </form>
                 </div>
             </div>

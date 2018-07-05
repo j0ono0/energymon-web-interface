@@ -1,7 +1,7 @@
 <div
-    ref="acc_{{ network.id }}" 
-    :style="accStyles({{ network.id }})"
-    :class="accClasses({{ network.id }})"
+    ref="acc_{{ key }}" 
+    :style="accStyles({{ key }})"
+    :class="accClasses({{ key }})"
 >
     <form 
         v-cloak 
