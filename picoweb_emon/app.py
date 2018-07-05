@@ -1,14 +1,15 @@
 import picoweb
 import uasyncio
-import ure as re
 import ujson
 import btree
 
-from helpers import data
+'''
 # Create required databases if they don't already exist
+from helpers import data
 data.make_networkdb()
 data.make_loggerdb()
 data.make_configdb()
+'''
 
 app = picoweb.WebApp(None)
 
@@ -189,5 +190,5 @@ def device(req, resp):
 import logging
 logging.basicConfig(level=logging.INFO)
 
-app.run(debug=True)
-#app.run(debug=True, host = "192.168.178.43")
+#app.run(debug=True)
+app.run(debug=True, host = "192.168.178.43")
