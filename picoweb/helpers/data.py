@@ -2,30 +2,19 @@
 import btree
 import ujson
 
-# TODO: Make decorator work
-def db_access(db_name):
+# TODO: Make decorator?
 
-    def db_decorator(function):
-        def wrapper(*args, **kwargs):
-            try:
-                f = open(db_name, "r+b")
-            except OSError:
-                f = open(db_name, "w+b")
-            db = btree.open(f)
-            
-            function(db, *args, **kwargs)
-            
-            db.flush()
-            db.close()
-            f.close()
-        return wrapper
-    return db_decorator
+def make_dbs():
+    # Create new databases if they don't exist
+    network_db()
+    logger_db()
+    config_db()
 
-def make_networkdb():
+def network_db():
     try:
-        f = open("networkdb", "r+b")
+        f = open("network.db", "r+b")
     except OSError:
-        f = open("networkdb", "w+b")
+        f = open("network.db", "w+b")
 
         # Now open a database itself
         db = btree.open(f)
@@ -55,13 +44,13 @@ def make_networkdb():
         db.close()
         f.close()
 
-def make_loggerdb():
+def logger_db():
     try:
-        f = open("loggerdb", "r+b")
+        f = open("logger.db", "r+b")
     except OSError:
-        f = open("loggerdb", "w+b")
+        f = open("logger.db", "w+b")
         db = btree.open(f)
-        db["service"] = "awsiot"
+        db[b"service"] = "awsiot"
         db[b"awsiot"] = ujson.dumps({
             "name": "Amazon Web Service, IoT",
             "cert": 12345678,
@@ -77,28 +66,19 @@ def make_loggerdb():
         db.close()
         f.close()
 
-def make_configdb():
+def config_db():
     try:
-        f = open("configdb", "r+b")
+        f = open("config.db", "r+b")
     except OSError:
-        f = open("configdb", "w+b")
+        f = open("config.db", "w+b")
         db = btree.open(f)
-        db[b"version"] = "0.0.1.1"
-        db[b"latest"] = "0.0.1.2"
-        db[b"ECI1"] = ujson.dumps({
-            "Name": "ECI1",
-            "CRC1": 1,
-            "CRC2": 2,
-            "Gain": 3,
-            "Ugain": 4,
-        })
-        db[b"ECI2"] = ujson.dumps({
-            "Name": "ECI2",
-            "CRC1": 5,
-            "CRC2": 6,
-            "Gain": 7,
-            "Ugain": 8,
-        })
-
+        db[b"eci1_crc1"] = b"0"
+        db[b"eci1_crc2"] = b"0"
+        db[b"eci1_gain"] = b"0"
+        db[b"eci1_ugain"] = b"0"
+        db[b"eci2_crc1"] = b"0"
+        db[b"eci2_crc2"] = b"0"
+        db[b"eci2_gain"] = b"0"
+        db[b"eci2_ugain"] = b"0"
         db.close()
         f.close()    

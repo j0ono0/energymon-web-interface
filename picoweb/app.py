@@ -3,13 +3,8 @@ import uasyncio
 import ujson
 import btree
 
-'''
-# Create required databases if they don't already exist
-from helpers import data
-data.make_networkdb()
-data.make_loggerdb()
-data.make_configdb()
-'''
+#from helpers import data
+#data.make_dbs()
 
 app = picoweb.WebApp(None)
 
@@ -41,7 +36,7 @@ def networks(req, resp):
         ssid = req.form.get('ssid')[0]
         pwd = req.form.get('pwd')[0]
         
-        f = open("networkdb", "r+b")
+        f = open("network.db", "r+b")
         db = btree.open(f)
         
         if req.form.get('connect'):
@@ -67,7 +62,7 @@ def networks(req, resp):
 
     # Load networks from db
     # Open db (assumes it exists at this point)
-    f = open("networkdb", "r+b")
+    f = open("network.db", "r+b")
     db = btree.open(f)
     # Retrieve all network, convert to list of dicts
     networks = []
@@ -92,7 +87,7 @@ def push_data(req, resp):
     
 @app.route("/logging", methods=['GET','POST'])
 def logging(req, resp):
-    f = open("loggerdb", "r+b")
+    f = open("logger.db", "r+b")
     db = btree.open(f)
     if req.method == 'POST':
         yield from req.read_form_data()
@@ -129,66 +124,49 @@ def device(req, resp):
     alert = Alert()
     if req.method == 'POST':
         yield from req.read_form_data()
-        # Validate data
-        valid = True
-        fields = ['ECI1_CRC1','ECI1_CRC2','ECI1_Gain','ECI1_Ugain','ECI2_CRC1','ECI2_CRC2','ECI2_Gain','ECI2_Ugain']
-        for field in fields:
-            input = req.form.get(field)[0] or ''
-            try:
-                int(input)
-            except:
-                valid = False
-        if valid:
-            f = open("configdb", "r+b")
-            db = btree.open(f)
-            
-            db[b"ECI1"] = ujson.dumps({
-                "Name": "ECI1",
-                "CRC1": req.form.get('ECI1_CRC1')[0],
-                "CRC2": req.form.get('ECI1_CRC2')[0],
-                "Gain": req.form.get('ECI1_Gain')[0],
-                "Ugain": req.form.get('ECI1_Ugain')[0],
-            })
-            db[b"ECI2"] = ujson.dumps({
-                "Name": "ECI2",
-                "CRC1": req.form.get('ECI2_CRC1')[0],
-                "CRC2": req.form.get('ECI2_CRC2')[0],
-                "Gain": req.form.get('ECI2_Gain')[0],
-                "Ugain": req.form.get('ECI2_Ugain')[0],
-            })
-            
-            db.close()
-            f.close()
-            
-            # Redirect to homepage
-            yield from resp.awrite("HTTP/1.0 308 Redirect\r\n")
-            yield from resp.awrite("Location:/ \r\n")
-            return
-        else:
-            alert.type= 'failure'
-            alert.message = '<p>Only integers please. Your settings have not been saved.</p>'
 
-    f = open("configdb", "r+b")
+        #TODO: field validation
+        
+        f = open("config.db", "r+b")
+        db = btree.open(f)
+        db[b"eci1_crc1"] = req.form.get("eci1_crc1")[0]
+        db[b"eci1_crc2"] = req.form.get("eci1_crc2")[0]
+        db[b"eci1_gain"] = req.form.get("eci1_gain")[0]
+        db[b"eci1_ugain"] = req.form.get("eci1_ugain")[0]
+        db[b"eci2_crc1"] = req.form.get("eci2_crc1")[0]
+        db[b"eci2_crc2"] = req.form.get("eci2_crc2")[0]
+        db[b"eci2_gain"] = req.form.get("eci2_gain")[0]
+        db[b"eci2_ugain"] = req.form.get("eci2_ugain")[0]
+        db.close()
+        f.close()
+        
+        # Redirect to homepage
+        yield from resp.awrite("HTTP/1.0 308 Redirect\r\n")
+        yield from resp.awrite("Location:/ \r\n")
+
+    f = open("config.db", "r+b")
     db = btree.open(f)
-    config = [ujson.loads(db['ECI1']),ujson.loads(db['ECI2'])]
+    config = {}
+    for key in db:
+        key = key.decode('utf-8')
+        config[key] = db[key].decode('utf-8')
     db.close()
     f.close()
-    
+
     yield from picoweb.start_response(resp)
     yield from app.render_template(resp, "hardware.html",(config, alert))
-
+    micropython.mem_info()
+    
 @app.route("/firmware")
 def device(req, resp):
-    f = open("configdb", "r+b")
-    db = btree.open(f)
-    version = db['version'].decode('utf-8')
-    latest = db['latest'].decode('utf-8')
-    db.close()
-    f.close()
+
+    version = "0.0.1"
+    latest = "0.0.2"
+
     yield from picoweb.start_response(resp)
     yield from app.render_template(resp, "firmware.html",(version, latest))
 import logging
 logging.basicConfig(level=logging.INFO)
 
-#app.run(debug=True)
-app.run(debug=True, host = "192.168.178.43")
+app.run(debug=True)
+#app.run(debug=True, host = "192.168.178.43")

@@ -1,0 +1,77 @@
+{% args config, alert %}
+
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'head.tpl' %}
+	<body>
+       {% include 'masthead.tpl' %}
+        {% if alert.message %}
+            {% include 'alert.tpl' %}
+        {% endif %}
+        <div class="pagesection">
+            <div class="component">
+                {% include 'component_header.tpl' 'Device configuration' %}
+                <div class="ui__body">
+                    <div class="content">
+                        <p>Some explaination needed? ...</p>
+                    </div>
+                    <form method="post" class="form form__device">
+                        <fieldset>
+                                <h2>ECI 1</h2>
+                                <div class="grid-4">
+                                    <p>
+                                        <label>
+                                        CRC1 <input name="eci1_crc1" type="text" value="{{ config['eci1_crc1'] }}">
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                        CRC2 <input name="eci1_crc2" type="text" value="{{ config['eci1_crc2'] }}">
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                        Gain <input name="eci1_gain" type="text" value="{{ config['eci1_gain'] }}">
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                        U-Gain <input name="eci1_ugain" type="text" value="{{ config['eci1_ugain'] }}">
+                                        </label>
+                                    </p>
+                                </div>
+                        </fieldset>
+                        <fieldset>
+                                <h2>ECI 2</h2>
+                                <div class="grid-4">
+                                    <p>
+                                        <label>
+                                        CRC1 <input name="eci2_crc1" type="text" value="{{ config['eci2_crc1'] }}">
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                        CRC2 <input name="eci2_crc2" type="text" value="{{ config['eci2_crc2'] }}">
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                        Gain <input name="eci2_gain" type="text" value="{{ config['eci2_gain'] }}">
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                        U-Gain <input name="eci2_ugain" type="text" value="{{ config['eci2_ugain'] }}">
+                                        </label>
+                                    </p>
+                                </div>
+                        </fieldset>
+                        
+                        <p><a class="button" href="/">Cancel</a> <button type="submit" name="submit">Save</button></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+       {% include 'footer.tpl' %}
+	</body>
+</html>
