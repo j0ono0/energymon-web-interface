@@ -3,4 +3,6 @@
 /.sass-cache
 /firmware
 
+/templates/*_html.py
+
 *.ai
