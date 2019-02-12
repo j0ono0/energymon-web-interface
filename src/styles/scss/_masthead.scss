@@ -1,8 +1,11 @@
 .masthead{
-        padding: $u*2 $u;
         text-align: center;
+        padding-top: $u;
     a{
+        background: url('ident_emon.png') no-repeat center center;
         display: inline-block;
+        height: 80px;
+        width: 88px;
     }
     & > svg{
         display: block;
